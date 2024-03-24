@@ -1,0 +1,25 @@
+{% extends "garage/base.html" %}
+
+
+{% block content %}
+
+<div class="form-group">
+
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:veiculo-create' %}">Criar</a>
+
+</div>
+    {% for veiculo in veiculos %}
+        <article class="media content-section" >
+          <div class="media-body">
+            <div class="article-metadata">
+              id:<a class="mr-2" href="#">{{ veiculo.id }}</a>
+              <small class="text-muted">{{ veiculo.data_criacao }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'garage:veiculo-detail' veiculo.id %}">{{ veiculo.modelo }}</a></h2>
+            <p class="article-content">{{ veiculo.modelo }}</p>
+            <p class="article-content">{{ veiculo.placa }}</p>
+            <p class="article-content">{{ veiculo.motor }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

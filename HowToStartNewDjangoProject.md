@@ -16,7 +16,7 @@ Email: <conrado.almeida@outlook.com>
 - Conta no github
 - Conhecimentos básicos de informática
 
-# O que vamos usar
+# O que esté projeto usa
 
 ## Django Framework 5.0.3
 

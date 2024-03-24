@@ -11,12 +11,10 @@ Email: <conrado.almeida@outlook.com>
 
 # Pré-requisitos
 
-- Computador com Windows 10 ou superior.
-
-# Acesso a internet
-
-- Conta no github;
-- Conhecimentos básicos de informática,
+- Computador com Windows 10 ou superior
+- Acesso a internet
+- Conta no github
+- Conhecimentos básicos de informática
 
 # O que vamos usar
 

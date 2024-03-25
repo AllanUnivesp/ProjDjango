@@ -1,13 +1,15 @@
-`git clone https://github.com/ConradoAlmeida/ProjDjango.git`
+
 
 
 
 # Pré-requisitos 
 
-- Computador com Windows 10 ou superior
 - Acesso a internet
+- Windows 10 ou superior
 - Conta no github
-- Conhecimentos básicos de informática
+- Git
+- Python
+
 # O que esté projeto usa
 
 ## Django Framework 5.0.3
@@ -38,6 +40,9 @@ O Pipenv é uma ferramenta que visa trazer o melhor de todos os mundos de empaco
 
 O Windows 11 é um sistema operacional e a versão atual do sistema Microsoft Windows desenvolvido pela Microsoft, anunciada e lançado em 2021, como o sucessor da versão Windows 10. No final de 2020, foi anunciado que era planejado uma grande atualização para o Windows 10 denominada "Sun Valley".
 
+
+
+`git clone https://github.com/ConradoAlmeida/ProjDjango.git`
 
 Once you've cloned the repository, navigate into the repository.
 

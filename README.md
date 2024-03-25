@@ -82,11 +82,11 @@ Agora execute a aplicação com o comando:
 `py manage.py runserver`
 Uma mensagem como esta deverá aparecer:
 
-'''System check identified no issues (0 silenced).
+```System check identified no issues (0 silenced).
 March 24, 2024 - 22:14:09
 Django version 4.2.11, using settings 'GarageHub.settings'
 Starting development server at http://127.0.0.1:8000/
-Quit the server with CTRL-BREAK.'''
+Quit the server with CTRL-BREAK.```
 
 
 

@@ -2,7 +2,7 @@
 
 
 
-1# Pré-requisitos
+# 1. Pré-requisitos
 
 - Acesso a internet
 - Windows 10 ou superior

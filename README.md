@@ -68,8 +68,10 @@ Agora precisamos clonar a aplicação deste repositório do GitHub para isso exe
 
 ### Instalando os Pré-requisitos do Python
 Para instalar o pré-requisitos, precisamos navegar até o diretório que contem o arquivo requirements.txt:
-`cd projdjango`
-`pip install -r requirements.txt`
+```
+cd projdjango
+pip install -r requirements.txt
+```
 
 Parabéns, você terminou.
 No próximo capítulo vamos rodar a aplicação localmente.

@@ -2,7 +2,7 @@
 
 
 
-<code style="color : Darkorange">Pré-requisitos</code> 
+# Pré-requisitos 
 
 - Computador com Windows 10 ou superior
 - Acesso a internet

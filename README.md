@@ -8,7 +8,7 @@
 - Acesso a internet
 - Conta no github
 - Conhecimentos básicos de informática
-  # O que esté projeto usa
+# O que esté projeto usa
 
 ## Django Framework 5.0.3
 

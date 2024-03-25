@@ -43,11 +43,34 @@ O Windows 11 é um sistema operacional e a versão atual do sistema Microsoft Wi
 # PREPARANDO O AMBIENTE
 
 ## Ambiente Virtual
+
 Com o Ambiente Virtual Python (Virtualenv), cada projeto pode ter seu próprio ambiente isolado, permitindo a instalação e gerenciamento de versões específicas de bibliotecas e suas dependências. Isso garante que cada projeto tenha um ambiente consistente e estável, sem interferir em outros projetos ou no ambiente global do Python. É uma prática recomendada para desenvolvedores Python que desejam manter a organização e a integridade de seus projetos.
+
 ### Instalação do pipenv
+
+No prompt de comando execute: `py -m pip install pipenv`
+
+#### Criação do ambiente para a aplicação
+
+É preciso criar um ambiente virtual do Python, para rodar a sua aplicação, para isso vamos criar uma pasta:
+`win+R`
+`cmd`
+`cd Documents` Documentos se estiver me português
+`mkdir projdjango`
+`cd projdjango`
+Agora podemos criar nosso ambiente dentro da pasta, passa isso execute:
+`pipenv shell`
+Veja que após a criação, o ambiente já será ativado, aparecendo o nome dele entre (projdjango-xxxxxxxx)
+
 ### Clone do projeto no GiHub
+Agora precisamos clonar a aplicação deste repositório do GitHub para isso execute:
 `git clone https://github.com/ConradoAlmeida/ProjDjango.git`
+
 ### Instalaçção dos Pré-requisitos do Python
+Para instalar o pré-requisitos, precisamos navegar até o diretório que contem o arquivo requirements.txt:
+`cd projdjango`
+`pip install -r requirements.txt`
+
 
 
 Once you've cloned the repository, navigate into the repository.

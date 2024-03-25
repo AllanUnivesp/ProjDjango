@@ -43,6 +43,7 @@ O Windows 11 é um sistema operacional e a versão atual do sistema Microsoft Wi
 # PREPARANDO O AMBIENTE
 
 ## Ambiente Virtual
+Com o Ambiente Virtual Python (Virtualenv), cada projeto pode ter seu próprio ambiente isolado, permitindo a instalação e gerenciamento de versões específicas de bibliotecas e suas dependências. Isso garante que cada projeto tenha um ambiente consistente e estável, sem interferir em outros projetos ou no ambiente global do Python. É uma prática recomendada para desenvolvedores Python que desejam manter a organização e a integridade de seus projetos.
 ### Instalação do pipenv
 ### Clone do projeto no GiHub
 `git clone https://github.com/ConradoAlmeida/ProjDjango.git`

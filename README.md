@@ -12,6 +12,10 @@
 
 # 2. O que esté projeto usa
 
+```javascript copy
+const copyMe = true
+```
+
 ## Django Framework 5.0.3
 
 O Django é um framework web Python de código aberto que simplifica a criação de soluções web escaláveis. Ele oferece um ambiente para desenvolvimento rápido, promovendo um design limpo e ferramentas eficientes para pessoas desenvolvedoras. Com o Django, é possível construir sites e aplicações web de alto desempenho de forma mais simples, rápida e com menos código.

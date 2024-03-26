@@ -63,8 +63,10 @@ cd Documents
 
 Depois vamos criar o diretório para a aplicação:
 
-`mkdir projdjango`
-`cd projdjango`
+```
+mkdir projdjango
+cd projdjango
+```
 
 Agora podemos criar nosso ambiente dentro da pasta, passa isso execute:
 

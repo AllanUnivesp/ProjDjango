@@ -116,4 +116,5 @@ Quit the server with CTRL-BREAK.
 ```
 
 Abra o navegador com Ctrl+click no link
-Se a página estiver quebrada, digite `/garage` ao fim do endereço.
+Se a página estiver quebrada, digite `/garage` ao fim do endereço, ficando assim:
+`http://127.0.0.1:8000/garage`

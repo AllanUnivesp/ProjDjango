@@ -95,7 +95,7 @@ No próximo capítulo vamos rodar a aplicação localmente.
 
 Agora execute a aplicação com o comando:
 
-```powershell copy
+```bash
 py manage.py runserver
 ```
 

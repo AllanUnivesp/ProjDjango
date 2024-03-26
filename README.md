@@ -45,14 +45,18 @@ Com o Ambiente Virtual Python (Virtualenv), cada projeto pode ter seu próprio a
 
 ### Instalando o pipenv
 
-No prompt de comando execute: 
+No prompt de comando execute:
+
 `py -m pip install pipenv`
 
 #### Criando o ambiente para a aplicação
 
 É preciso criar um ambiente virtual do Python, para rodar a sua aplicação, para isso vamos criar uma pasta:
+
+> ![TIP]
+> Pressione win+R para abrir prompt de comando
+
 ```powershell
-win+R
 cmd
 cd Documents
 ```

@@ -53,7 +53,7 @@ No prompt de comando execute:
 
 É preciso criar um ambiente virtual do Python, para rodar a sua aplicação, para isso vamos criar uma pasta:
 
-> ![TIP]
+> [!TIP]
 > Pressione win+R para abrir prompt de comando
 
 ```powershell

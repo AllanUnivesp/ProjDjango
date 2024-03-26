@@ -1,7 +1,4 @@
 
-
-
-
 # 1. Pré-requisitos
 
 - Acesso a internet
@@ -48,12 +45,13 @@ Com o Ambiente Virtual Python (Virtualenv), cada projeto pode ter seu próprio a
 
 ### Instalando o pipenv
 
-No prompt de comando execute: `py -m pip install pipenv`
+No prompt de comando execute: 
+`py -m pip install pipenv`
 
 #### Criando o ambiente para a aplicação
 
 É preciso criar um ambiente virtual do Python, para rodar a sua aplicação, para isso vamos criar uma pasta:
-```
+```powershell
 win+R
 cmd
 cd Documents
@@ -63,7 +61,7 @@ cd Documents
 
 Depois vamos criar o diretório para a aplicação:
 
-```
+```powershell
 mkdir projdjango
 cd projdjango
 ```
@@ -71,16 +69,20 @@ cd projdjango
 Agora podemos criar nosso ambiente dentro da pasta, passa isso execute:
 
 `pipenv shell`
+
 Veja que após a criação, o ambiente já será ativado, aparecendo o nome dele entre (projdjango-xxxxxxxx)
 
 ### Clonando o projeto do GitHub
 Agora precisamos clonar a aplicação deste repositório do GitHub para isso execute:
-`git clone https://github.com/ConradoAlmeida/ProjDjango.git`
+
+```bash
+git clone https://github.com/ConradoAlmeida/ProjDjango.git
+```
 
 ### Instalando os Pré-requisitos do Python
 Para instalar o pré-requisitos, precisamos navegar até o diretório que contem o arquivo requirements.txt:
 
-```
+```powershell
 cd projdjango
 pip install -r requirements.txt
 ```
@@ -95,7 +97,7 @@ No próximo capítulo vamos rodar a aplicação localmente.
 
 Agora execute a aplicação com o comando:
 
-```bash
+```powershell
 py manage.py runserver
 ```
 

@@ -60,9 +60,14 @@ cd Documents
 ```
 > [!TIP]
 > Documentos se estiver me português.
+
+Depois vamos criar o diretório para a aplicação:
+
 `mkdir projdjango`
 `cd projdjango`
+
 Agora podemos criar nosso ambiente dentro da pasta, passa isso execute:
+
 `pipenv shell`
 Veja que após a criação, o ambiente já será ativado, aparecendo o nome dele entre (projdjango-xxxxxxxx)
 

@@ -53,8 +53,10 @@ No prompt de comando execute: `py -m pip install pipenv`
 #### Criando o ambiente para a aplicação
 
 É preciso criar um ambiente virtual do Python, para rodar a sua aplicação, para isso vamos criar uma pasta:
-```win+R
-cmd```
+```
+win+R
+cmd
+```
 `cd Documents` Documentos se estiver me português
 `mkdir projdjango`
 `cd projdjango`

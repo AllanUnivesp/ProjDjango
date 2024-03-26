@@ -56,8 +56,10 @@ No prompt de comando execute: `py -m pip install pipenv`
 ```
 win+R
 cmd
+cd Documents
 ```
-`cd Documents` Documentos se estiver me português
+> [!TIP]
+> Documentos se estiver me português.
 `mkdir projdjango`
 `cd projdjango`
 Agora podemos criar nosso ambiente dentro da pasta, passa isso execute:

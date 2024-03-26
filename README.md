@@ -12,7 +12,7 @@
 
 # 2. O que esté projeto usa
 
-```javascript copy
+```python copy
 const copyMe = true
 ```
 

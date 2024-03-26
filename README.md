@@ -79,6 +79,7 @@ Agora precisamos clonar a aplicação deste repositório do GitHub para isso exe
 
 ### Instalando os Pré-requisitos do Python
 Para instalar o pré-requisitos, precisamos navegar até o diretório que contem o arquivo requirements.txt:
+
 ```
 cd projdjango
 pip install -r requirements.txt
@@ -89,10 +90,15 @@ No próximo capítulo vamos rodar a aplicação localmente.
 
 ## Rodando a aplicação
 É peciso navegar até o diretório onde está o manage.py da aplicação, para isso execute:
+
 `cd garagehub`
 
 Agora execute a aplicação com o comando:
-`py manage.py runserver`
+
+```python copy
+py manage.py runserver
+```
+
 Uma mensagem como esta deverá aparecer:
 
 ```

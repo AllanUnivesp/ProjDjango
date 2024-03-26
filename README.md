@@ -12,10 +12,6 @@
 
 # 2. O que esté projeto usa
 
-```python copy
-const copyMe = true
-```
-
 ## Django Framework 5.0.3
 
 O Django é um framework web Python de código aberto que simplifica a criação de soluções web escaláveis. Ele oferece um ambiente para desenvolvimento rápido, promovendo um design limpo e ferramentas eficientes para pessoas desenvolvedoras. Com o Django, é possível construir sites e aplicações web de alto desempenho de forma mais simples, rápida e com menos código.
@@ -99,13 +95,13 @@ No próximo capítulo vamos rodar a aplicação localmente.
 
 Agora execute a aplicação com o comando:
 
-```Python
+```powershell copy
 py manage.py runserver
 ```
 
 Uma mensagem como esta deverá aparecer:
 
-```
+```powershell
 System check identified no issues (0 silenced).
 March 24, 2024 - 22:14:09
 Django version 4.2.11, using settings 'GarageHub.settings'

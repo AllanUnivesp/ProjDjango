@@ -1,4 +1,17 @@
 
+# 0. Introdução
+
+Este é um projeto de um sistema de gerenciamento de oficina mecânica que tem como funções principais, ferramentas de gestão de cadastro de clientes, ordens de serviços e repositório de peças.
+Com esse sistema, a oficina poderá aplicar as boas práticas de gestão e será capaz de manter todo o cadastro de clientes e funcionários atualizados em um banco de dados, que pode ser na nuvem ou local.
+
+# 0b. Dificuldades - colaboradores podem ajudar
+
+Abaixo algumas das dificuldades encontradas e ainda sem solução definitiva:
+ - Repositório atualizado de veículos, gratuíto (para o campo de selecionar o véiculo do cliente)
+ - Layout das telas:
+    - Cadastro de clientes
+    - Cadastro de ordem de serviço
+
 # 1. Pré-requisitos
 
 - Acesso a internet

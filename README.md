@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 # 0. Introdução
 
@@ -13,8 +12,6 @@ Abaixo algumas das dificuldades encontradas e ainda sem solução definitiva:
     - Cadastro de clientes
     - Cadastro de ordem de serviço
 
-=======
->>>>>>> 52a9a08805fd07e3bc2ceb2ff73f4ff848059736
 # 1. Pré-requisitos
 
 - Acesso a internet

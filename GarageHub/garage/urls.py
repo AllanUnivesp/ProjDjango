@@ -11,7 +11,12 @@ from .views import (
     VeiculoDetailView,
     VeiculoCreateView,
     VeiculoDeleteView,
-    VeiculoUpdateView
+    VeiculoUpdateView,
+    OrdemCreateView,
+    OrdemDeleteView,
+    OrdemDetailView,
+    OrdemListView,
+    OrdemUpdateView
     )
 
 app_name = 'garage'
@@ -33,4 +38,9 @@ urlpatterns = [
     path('veiculos/<int:pk>/update/', VeiculoUpdateView.as_view(), name='veiculo-update'),
     path('veiculos/<int:pk>/delete/', VeiculoDeleteView.as_view(), name='veiculo-delete'),
     
+    path('ordens', OrdemListView.as_view(), name='ordem-view'),
+    path('ordens/<int:pk>/', OrdemDetailView.as_view(), name='ordem-detail'),
+    path('ordens/new/', OrdemCreateView.as_view(), name='ordem-create'),
+    path('ordens/<int:pk>/update/', OrdemUpdateView.as_view(), name='ordem-update'),
+    path('ordens/<int:pk>/delete/', OrdemDeleteView.as_view(), name='ordem-delete'),
 ]

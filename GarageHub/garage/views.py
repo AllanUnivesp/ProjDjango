@@ -29,7 +29,8 @@ class ClienteDetailView(DetailView):
     
 class ClienteCreateView(CreateView):
     model = Cliente
-    fields = vars(Cliente).keys() #para pegar a lista direto do modelo em models.py
+    # fields = vars(Cliente).keys() #para pegar a lista direto do modelo em models.py
+    fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep', 'data_criacao', 'email']
     template_name = 'garage/clientes/client_create_form.html'
     
     def form_valid(self, form):
@@ -100,12 +101,11 @@ class VeiculoUpdateView(UpdateView):
         return super().form_valid(form)
     
 
-
 class OrdemListView(ListView):
     model = Ordem
-    template_name = 'garage/ordems/ordem_inicio.html'
-    context_object_name = 'ordems'
-    ordering = ['-data_criacao']
+    template_name = 'garage/ordens/ordem_home.html'
+    context_object_name = 'ordens'
+    ordering = ['-cliente_id']
     
 class OrdemDetailView(DetailView):
     model = Ordem
@@ -113,8 +113,14 @@ class OrdemDetailView(DetailView):
     
 class OrdemCreateView(CreateView):
     model = Ordem
-    fields = ['marca','modelo', 'placa', 'motor', 'ano', 'data_criacao']
+    fields = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'data_ordem', 'veiculo_id', 'cliente_id']
     template_name = 'garage/ordems/ordem_create_form.html'
+    
+    
+    
+    
+    
+    
     
     def form_valid(self, form):
         form.instance.author = self.request.user

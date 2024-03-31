@@ -90,6 +90,10 @@ class PecasServico(models.Model):
         return reverse('garage:ordem-detail', args=[self.id])
 
 
+
+
+
+
 class Post(models.Model):
     class Status(models.TextChoices):
         DRAFT = 'DF', 'Draft'

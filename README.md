@@ -1,4 +1,3 @@
-{{ git_page_last_updated }}
 # 1. Pré-requisitos
 
 - Acesso a internet

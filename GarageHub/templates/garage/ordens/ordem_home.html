@@ -1,0 +1,25 @@
+{% extends "garage/base.html" %}
+
+
+{% block content %}
+
+<div class="form-group">
+
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:client-create' %}">Criar</a>
+
+</div>
+    {% for cliente in clientes %}
+        <article class="media content-section" >
+          <div class="media-body">
+            <div class="article-metadata">
+              id:<a class="mr-2" href="#">{{ cliente.id }}</a>
+              <small class="text-muted">{{ cliente.data_criacao }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'garage:client-detail' cliente.id %}">{{ cliente.nome }}</a></h2>
+            <p class="article-content">{{ cliente.endereco }}</p>
+            <p class="article-content">{{ cliente.cidade }}</p>
+            <p class="article-content">{{ cliente.bairro }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

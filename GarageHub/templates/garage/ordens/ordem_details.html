@@ -1,0 +1,26 @@
+{% extends "garage/base.html" %}
+{% block content %}
+  <article class="media content-section">
+    {% comment %} <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}"> {% endcomment %}
+    <div class="media-body">
+      <div class="article-metadata">
+        id:<a class="mr-2" href="#">{{ object.id }}</a>
+        <small class="text-muted">{{ object.data_criacao|date:"F d, Y" }}</small>
+        {% if object.nome != user %}
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:client-update' object.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'garage:client-delete' object.id %}">Delete</a>
+          </div>
+        {% endif %}
+      </div>
+      <h2 class="article-title">{{ object.nome }}</h2>
+      <p class="article-content">{{ object.content }}</p>
+      <p class="article-content">{{ object.endereco }}</p>
+      <p class="article-content">{{ object.cidade }}</p>
+      <p class="article-content">{{ object.bairro }}</p>
+      <p class="article-content">{{ object.cep }}</p>
+      <p class="article-content">{{ object.email }}</p>
+
+    </div>
+  </article>
+{% endblock content %}

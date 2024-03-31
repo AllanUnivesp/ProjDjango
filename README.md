@@ -47,7 +47,9 @@ Com o Ambiente Virtual Python (Virtualenv), cada projeto pode ter seu próprio a
 
 No prompt de comando execute:
 
-`py -m pip install pipenv`
+```powershell
+py -m pip install pipenv
+```
 
 #### Criando o ambiente para a aplicação
 
@@ -72,7 +74,9 @@ cd projdjango
 
 Agora podemos criar nosso ambiente dentro da pasta, passa isso execute:
 
-`pipenv shell`
+```powershell
+pipenv shell
+```
 
 Veja que após a criação, o ambiente já será ativado, aparecendo o nome dele entre (projdjango-xxxxxxxx)
 
@@ -97,7 +101,9 @@ No próximo capítulo vamos rodar a aplicação localmente.
 ## Rodando a aplicação
 É peciso navegar até o diretório onde está o manage.py da aplicação, para isso execute:
 
-`cd garagehub`
+```powershell
+cd garagehub
+```
 
 Agora execute a aplicação com o comando:
 

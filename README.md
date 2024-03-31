@@ -17,8 +17,11 @@ Abaixo algumas das dificuldades encontradas e ainda sem solução definitiva:
 - Acesso a internet
 - Windows 10 ou superior
 - Conta no GitHub
+    - https://github.com/
 - Git
+    - https://git-scm.com/downloads
 - Python
+    - https://www.python.org/downloads/
 
 # 2. O que esté projeto usa
 
@@ -69,10 +72,9 @@ py -m pip install pipenv
 É preciso criar um ambiente virtual do Python, para rodar a sua aplicação, para isso vamos criar uma pasta:
 
 > [!TIP]
-> Pressione win+R para abrir prompt de comando
+> Pressione win+R e escreva cmd e dê Enter para abrir prompt de comando
 
 ```powershell
-cmd
 cd Documents
 ```
 > [!TIP]

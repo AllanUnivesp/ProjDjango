@@ -3,7 +3,7 @@
 
 - Acesso a internet
 - Windows 10 ou superior
-- Conta no github
+- Conta no GitHub
 - Git
 - Python
 

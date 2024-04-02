@@ -23,7 +23,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="/garage">Home</a>
+              {% comment %} <a class="nav-item nav-link" href="{% url 'garage-home' %}">Home</a> {% endcomment %}
+
               <a class="nav-item nav-link" href="/garage/clientes">Clientes</a>
               <a class="nav-item nav-link" href="/garage/veiculos">Veículos</a>
               <a class="nav-item nav-link" href="/garage/ordens">Ordem de Serviço</a>

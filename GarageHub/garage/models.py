@@ -10,12 +10,13 @@ class PublishedManager(models.Manager):
 
 class Cliente(models.Model):
     nome = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250)
     n_cpf = models.CharField(max_length=50)
     endereco = models.CharField(max_length=150)
     bairro = models.CharField(max_length=50)
     cidade = models.CharField(max_length=50)
     cep = models.CharField(max_length=9)
-    data_criacao = models.DateField()
+    data_criacao = models.DateTimeField(auto_now_add=True)
     email = models.CharField(max_length=100)
     
         
@@ -27,6 +28,7 @@ class Cliente(models.Model):
     
 class Veiculo(models.Model):
     marca = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=250)
     modelo = models.CharField(max_length=50)
     placa = models.CharField(max_length=250)
     motor = models.CharField(max_length=150)
@@ -56,6 +58,7 @@ class Ordem(models.Model):
     )
     
     titulo = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=250)
     status = models.CharField(choices=STATUS_ORDEM,default='Em Execução - aprovado pelo cliente', max_length=100)
     condicao = models.CharField(choices=CONDICOES_VEICULO,default='Normal - Proprietário veio rodando', max_length=100)
     descricao = models.CharField(max_length=150)
@@ -68,10 +71,11 @@ class Ordem(models.Model):
         return self.titulo
 
     def get_absolute_url(self):
-        return reverse('garage:ordem-detail', args=[self.id])
+        return reverse('ordem-detail', args=[self.id])
 
 class CadastroPecas(models.Model):
     nome = models.CharField(max_length=150, default='sem nome')
+    slug = models.SlugField(max_length=250)
     codigo = models.CharField(max_length=50) 
     grupo = models.CharField(max_length=50)    
     subgrupo = models.CharField(max_length=50)     

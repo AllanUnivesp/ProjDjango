@@ -16,15 +16,21 @@ from .views import (
     OrdemDeleteView,
     OrdemDetailView,
     OrdemListView,
-    OrdemUpdateView
+    OrdemUpdateView,
+    HomeListView,
     )
 
 app_name = 'garage'
 
 urlpatterns = [
     
-    path('', post_list, name='post_list'),
-    path('<int:id>/', post_detail, name='post_detail'),
+    # path('', post_list, name='post_list'),
+    # path('<int:id>/', post_detail, name='post_detail'),
+
+
+
+# construindo a list view do inicio
+    path('', HomeListView.as_view(), name='garage-home'),
 
     path('clientes', ClienteListView.as_view(), name='client-view'),
     path('clientes/<int:pk>/', ClienteDetailView.as_view(), name='client-detail'),

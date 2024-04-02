@@ -6,6 +6,8 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Cadastro de Novo Cliente</legend>
+                {% comment %} {{ form.as_p }} {% endcomment %}
+                {% comment %} {{ form.marca.as_field_group }} {% endcomment %}
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">

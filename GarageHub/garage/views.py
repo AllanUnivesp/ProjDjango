@@ -11,11 +11,28 @@ from django.views.generic import (
     )
 from .models import Post, Cliente, Veiculo, Ordem
 
+def post_list(request):
+    posts = Post.published.all()
+    return render(request, 'garage/post/list.html', {'posts':posts})
+
+def post_detail(request, id):
+    post = get_object_or_404(Post, id=id, status=Post.Status.PUBLISHED)
+    
+    return render(request, 'garage/post/detail.html', {'post': post})
+
 def home(request):
     context = {
-        'clientes': Cliente.objects.all()
+        'clientes': Ordem.objects.all()
     }
     return render(request, 'garage/home.html', context)
+
+
+class HomeListView(ListView):
+    model = Ordem
+    template_name = 'garage/home.html'
+    context_object_name = 'ordens'
+    ordering = ['-data_ordem']
+
 
 class ClienteListView(ListView):
     model = Cliente
@@ -30,8 +47,10 @@ class ClienteDetailView(DetailView):
 class ClienteCreateView(CreateView):
     model = Cliente
     # fields = vars(Cliente).keys() #para pegar a lista direto do modelo em models.py
-    fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep', 'data_criacao', 'email']
+    fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep', 'email']
     template_name = 'garage/clientes/client_create_form.html'
+    
+
     
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -58,15 +77,7 @@ class ClienteUpdateView(UpdateView):
         return False
  
 
-def post_list(request):
-    posts = Post.published.all()
-    return render(request, 'garage/post/list.html', {'posts':posts})
-
-def post_detail(request, id):
-    post = get_object_or_404(Post, id=id, status=Post.Status.PUBLISHED)
     
-    return render(request, 'garage/post/detail.html', {'post': post})
-
 class VeiculoListView(ListView):
     model = Veiculo
     template_name = 'garage/veiculos/veiculo_inicio.html'
@@ -115,12 +126,6 @@ class OrdemCreateView(CreateView):
     model = Ordem
     fields = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'data_ordem', 'veiculo_id', 'cliente_id']
     template_name = 'garage/ordems/ordem_create_form.html'
-    
-    
-    
-    
-    
-    
     
     def form_valid(self, form):
         form.instance.author = self.request.user

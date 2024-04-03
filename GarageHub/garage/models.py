@@ -19,13 +19,13 @@ class Cliente(models.Model):
     data_criacao = models.DateTimeField(auto_now_add=True)
     email = models.CharField(max_length=100)
     
-        
+    
     def __str__(self):
         return self.nome
 
     def get_absolute_url(self):
         return reverse('garage:client-detail', args=[self.id])
-    
+
 class Veiculo(models.Model):
     marca = models.CharField(max_length=50)
     slug = models.SlugField(max_length=250)
@@ -34,7 +34,7 @@ class Veiculo(models.Model):
     motor = models.CharField(max_length=150)
     ano = models.CharField(max_length=50)
     data_criacao = models.DateField()
-    
+
     def __str__(self):
         return self.modelo
 
@@ -56,7 +56,7 @@ class Ordem(models.Model):
         ('D', 'Finallizado'),
         ('E', 'Finallizado - interrompido pelo cliente')
     )
-    
+
     titulo = models.CharField(max_length=50)
     slug = models.SlugField(max_length=250)
     status = models.CharField(choices=STATUS_ORDEM,default='Em Execução - aprovado pelo cliente', max_length=100)
@@ -66,7 +66,7 @@ class Ordem(models.Model):
     data_ordem = models.DateField()
     veiculo_id = models.ForeignKey(Veiculo, on_delete=models.CASCADE)
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    
+
     def __str__(self):
         return self.titulo
 
@@ -80,36 +80,32 @@ class CadastroPecas(models.Model):
     grupo = models.CharField(max_length=50)    
     subgrupo = models.CharField(max_length=50)     
     fabricante = models.CharField(max_length=50)     
-    
+
     def get_absolute_url(self): 
         return reverse('garage:cadastro-detail', args=[self.id])
-    
-    
+
+
 class PecasServico(models.Model):
     peca_id = models.ForeignKey(CadastroPecas, on_delete=models.CASCADE)
     ordem_id = models.ForeignKey(Ordem, on_delete=models.CASCADE)
-    
+
 
     def get_absolute_url(self):
         return reverse('garage:ordem-detail', args=[self.id])
-
-
-
-
 
 
 class Post(models.Model):
     class Status(models.TextChoices):
         DRAFT = 'DF', 'Draft'
         PUBLISHED = 'PB', 'Published'
-    
+
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250)
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
                                related_name='garage_post',
                                )
-      
+
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
@@ -117,16 +113,16 @@ class Post(models.Model):
     status = models.CharField(max_length=2,
                               choices=Status.choices,
                               default=Status.DRAFT)
-    
+
     objects = models.Manager()
     published = PublishedManager()
-    
+
     class Meta:
         ordering = ['-publish']
         indexes = [
             models.Index(fields=['-publish']),
         ]
-    
+
     def __str__(self):
         return self.title
     

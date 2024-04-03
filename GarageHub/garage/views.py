@@ -50,7 +50,6 @@ class ClienteCreateView(CreateView):
     fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep', 'email']
     template_name = 'garage/clientes/client_create_form.html'
     
-
     
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -120,12 +119,12 @@ class OrdemListView(ListView):
     
 class OrdemDetailView(DetailView):
     model = Ordem
-    template_name = 'garage/ordems/ordem_details.html'
+    template_name = 'garage/ordens/ordem_details.html'
     
 class OrdemCreateView(CreateView):
     model = Ordem
     fields = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'data_ordem', 'veiculo_id', 'cliente_id']
-    template_name = 'garage/ordems/ordem_create_form.html'
+    template_name = 'garage/ordens/ordem_create_form.html'
     
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -139,7 +138,7 @@ class OrdemDeleteView(DeleteView):
 class OrdemUpdateView(UpdateView):
     model = Ordem
     fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep', 'data_criacao']
-    template_name = 'garage/ordems/ordem_update_form.html'
+    template_name = 'garage/ordens/ordem_update_form.html'
     
     def form_valid(self, form):
         form.instance.author = self.request.user

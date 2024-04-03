@@ -2,19 +2,18 @@
 
 
 {% block content %}
-    {% for post in posts %}
+    {% for ordem in ordens %}
         <article class="media content-section">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.author }}</a>
-              <small class="text-muted">{{ post.date_posted }}</small>
+              <a class="mr-2" href="#">{{ ordem.id }}</a>
+              <small class="text-muted">{{ ordem.data_ordem }}</small>
             </div>
-            <h2><a class="article-title" href="{% url 'garage:post_detail' post.id %}">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
+            <h2><a class="article-title" href="{% url 'garage:ordem-detail' ordem.id %}">{{ ordem.titulo }}</a></h2>
+            <p class="article-content">{{ ordem.cliente_id }}</p>
+            <p class="article-content">{{ ordem.veiculo_id }}</p>
+            <p class="article-content">{{ ordem.descricao }}</p>
           </div>
         </article>
     {% endfor %}
 {% endblock content %}
-
-
-{% comment %} <a href="{% url 'garage:post_detail' post.id %}"> {% endcomment %}

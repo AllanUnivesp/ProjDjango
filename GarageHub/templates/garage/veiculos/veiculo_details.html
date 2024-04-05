@@ -13,13 +13,11 @@
           </div>
         {% endif %}
       </div>
-      <h2 class="article-title">{{ object.nome }}</h2>
-      <p class="article-content">{{ object.content }}</p>
-      <p class="article-content">{{ object.endereco }}</p>
-      <p class="article-content">{{ object.cidade }}</p>
-      <p class="article-content">{{ object.bairro }}</p>
-      <p class="article-content">{{ object.cep }}</p>
-      <p class="article-content">{{ object.email }}</p>
+      <h2 class="article-title">{{ object.marca }}</h2>
+      <p class="article-content"><strong>Modelo:</strong> {{ object.modelo }}</p>
+      <p class="article-content"><strong>Motor:</strong> {{ object.motor }}</p>
+      <p class="article-content"><strong>Ano:</strong> {{ object.ano }}</p>
+      <p class="article-content"><strong>Placa:</strong> {{ object.placa }}</p>
 
     </div>
   </article>

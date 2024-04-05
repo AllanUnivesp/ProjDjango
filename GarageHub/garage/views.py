@@ -1,6 +1,6 @@
 from typing import Any
 from django.forms import BaseModelForm
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import (
     ListView,
@@ -10,6 +10,24 @@ from django.views.generic import (
     DeleteView
     )
 from .models import Post, Cliente, Veiculo, Ordem
+from .forms import OrdemForm, VeiculosForm, ClientesForm
+
+def get_name(request):
+    print('esta entrando aqui')
+    if request.method == 'POST':
+        form = VeiculosForm(request.POST)
+        if form.is_valid():
+            print('esta entrando aqui1')
+            
+            return HttpResponseRedirect('/')
+    else:
+        # form = OrdemForm()
+        form = VeiculosForm()
+        print('esta entrando aqui2')
+    return render(request, 'garage/ordens/name.html', {'form':form})
+
+
+
 
 def post_list(request):
     posts = Post.published.all()
@@ -64,6 +82,7 @@ class ClienteUpdateView(UpdateView):
     model = Cliente
     fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep', 'data_criacao']
     template_name = 'garage/clientes/client_update_form.html'
+
     
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -75,11 +94,9 @@ class ClienteUpdateView(UpdateView):
             return True
         return False
  
-
-    
 class VeiculoListView(ListView):
     model = Veiculo
-    template_name = 'garage/veiculos/veiculo_inicio.html'
+    template_name = 'garage/veiculos/veiculo_home.html'
     context_object_name = 'veiculos'
     ordering = ['-data_criacao']
     
@@ -89,7 +106,7 @@ class VeiculoDetailView(DetailView):
     
 class VeiculoCreateView(CreateView):
     model = Veiculo
-    fields = ['marca','modelo', 'placa', 'motor', 'ano', 'data_criacao']
+    fields = ['marca','modelo', 'placa', 'motor', 'ano']
     template_name = 'garage/veiculos/veiculo_create_form.html'
     
     def form_valid(self, form):
@@ -103,7 +120,7 @@ class VeiculoDeleteView(DeleteView):
     
 class VeiculoUpdateView(UpdateView):
     model = Veiculo
-    fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep', 'data_criacao']
+    fields = ['marca','modelo', 'placa', 'motor', 'ano', 'data_criacao']
     template_name = 'garage/veiculos/veiculo_update_form.html'
     
     def form_valid(self, form):
@@ -123,8 +140,17 @@ class OrdemDetailView(DetailView):
     
 class OrdemCreateView(CreateView):
     model = Ordem
-    fields = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'data_ordem', 'veiculo_id', 'cliente_id']
+    fields = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'veiculo_id', 'cliente_id']
     template_name = 'garage/ordens/ordem_create_form.html'
+    
+    def get_context_data(self, **kwargs):
+        form_veiculos = VeiculosForm
+        form_clientes = ClientesForm
+        context = super().get_context_data(**kwargs)
+        context['form_veiculos'] = form_veiculos
+        context['form_clientes'] = form_clientes
+        
+        return context
     
     def form_valid(self, form):
         form.instance.author = self.request.user

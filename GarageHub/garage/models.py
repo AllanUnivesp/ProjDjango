@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
-
+from django.utils.text import slugify
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
@@ -28,12 +28,18 @@ class Cliente(models.Model):
 
 class Veiculo(models.Model):
     marca = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=250)
     modelo = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=250, unique=True)
     placa = models.CharField(max_length=250)
     motor = models.CharField(max_length=150)
     ano = models.CharField(max_length=50)
-    data_criacao = models.DateField()
+    data_criacao = models.DateField(auto_now_add=True)
+    
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.marca+ '-' +self.placa)
+        super(Veiculo, self).save(*args, **kwargs)
+    
 
     def __str__(self):
         return self.modelo
@@ -62,10 +68,13 @@ class Ordem(models.Model):
     status = models.CharField(choices=STATUS_ORDEM,default='Em Execução - aprovado pelo cliente', max_length=100)
     condicao = models.CharField(choices=CONDICOES_VEICULO,default='Normal - Proprietário veio rodando', max_length=100)
     descricao = models.CharField(max_length=150)
-    diagnostico = models.CharField(max_length=150, default='Descreva o problema observado')
-    data_ordem = models.DateField()
+    diagnostico = models.TextField(max_length=150, default='Descreva o problema observado')
+    data_ordem = models.DateField(auto_now_add=True)
     veiculo_id = models.ForeignKey(Veiculo, on_delete=models.CASCADE)
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    
+    
+    
 
     def __str__(self):
         return self.titulo

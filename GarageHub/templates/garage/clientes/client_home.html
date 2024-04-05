@@ -1,25 +1,26 @@
 {% extends "garage/base.html" %}
-
-
 {% block content %}
 
 <div class="form-group">
-
-    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:client-create' %}">Criar</a>
-
+  <a class="btn btn-success btn-sm mt-1 mb-1" href="{% url 'garage:client-create' %}">Criar</a>
 </div>
-    {% for cliente in clientes %}
-        <article class="media content-section" >
-          <div class="media-body">
-            <div class="article-metadata">
-              id:<a class="mr-2" href="#">{{ cliente.id }}</a>
-              <small class="text-muted">{{ cliente.data_criacao }}</small>
-            </div>
-            <h2><a class="article-title" href="{% url 'garage:client-detail' cliente.id %}">{{ cliente.nome }}</a></h2>
-            <p class="article-content">{{ cliente.endereco }}</p>
-            <p class="article-content">{{ cliente.cidade }}</p>
-            <p class="article-content">{{ cliente.bairro }}</p>
-          </div>
-        </article>
-    {% endfor %}
+{% for cliente in clientes %}
+<article class="media content-section">
+  <div class="media-body">
+      <div class="article-metadata">
+          <small class="text-muted">{{ cliente.data_criacao|date:"d " }} de {{ cliente.data_criacao|date:"F" }} de {{ cliente.data_criacao|date:"Y" }} </small>
+      </div>
+      <h2><a class="article-title" href="{% url 'garage:client-detail' cliente.id %}" >{{ cliente.nome }}</a></h2>
+      {% comment %} <p class="attpor"><strong>Última atualização por:</strong> {{ post.atualizadoPor }} </p> {% endcomment %}
+      {% comment %} <p class="article-content"> {{ cliente.content }}</p> {% endcomment %}
+      <p class="classificacao"><strong>Endenreço:</strong> {{ cliente.endereco }}</p>
+      <p class="classificacao"><strong>Bairro:</strong> {{ cliente.bairro }}</p>
+      <p class="classificacao"><strong>Cidade:</strong> {{ cliente.cidade }}</p>
+      <p class="classificacao"><strong>CEP:</strong> {{ cliente.cep }}</p>
+      <p class="classificacao"><strong>Número do CPF:</strong> {{ cliente.n_cpf }}</p>
+
+  </div>
+</article>
+{% endfor %}
+
 {% endblock content %}

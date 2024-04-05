@@ -2,6 +2,16 @@
 
 
 {% block content %}
+<div class="p-4 p-md-2 mb-4 rounded text-body-emphasis bg-body-secondary">
+    <h1>Ordens de Serviços</h1>
+    <p class="lead my-3">Utilize os filtros pré-programados para melhorar sua busca.</p>
+    <div class="button-box col-lg-12">
+
+      <button type="button" class="btn btn-primary">Ordens Em Andamento</button>
+      <button type="button" class="btn btn-primary">Ordens Concluídas</button>
+      <button type="button" class="btn btn-primary">Ordens Agendadas</button>
+    </div>
+</div>
     {% for ordem in ordens %}
         <article class="media content-section">
           <div class="media-body">

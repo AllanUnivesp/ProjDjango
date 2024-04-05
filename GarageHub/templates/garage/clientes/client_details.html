@@ -14,12 +14,11 @@
         {% endif %}
       </div>
       <h2 class="article-title">{{ object.nome }}</h2>
-      <p class="article-content">{{ object.content }}</p>
-      <p class="article-content">{{ object.endereco }}</p>
-      <p class="article-content">{{ object.cidade }}</p>
-      <p class="article-content">{{ object.bairro }}</p>
-      <p class="article-content">{{ object.cep }}</p>
-      <p class="article-content">{{ object.email }}</p>
+      <p class="article-content"><strong>Endereço: </strong>{{ object.endereco }}</p>
+      <p class="article-content"><strong>Cidade: </strong>{{ object.cidade }}</p>
+      <p class="article-content"><strong>Bairro: </strong>{{ object.bairro }}</p>
+      <p class="article-content"><strong>CEP: </strong>{{ object.cep }}</p>
+      <p class="article-content"><strong>E-mail: </strong>{{ object.email }}</p>
 
     </div>
   </article>

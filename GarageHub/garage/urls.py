@@ -18,6 +18,7 @@ from .views import (
     OrdemListView,
     OrdemUpdateView,
     HomeListView,
+    get_name
     )
 
 app_name = 'garage'
@@ -31,6 +32,9 @@ urlpatterns = [
 
 # construindo a list view do inicio
     path('', HomeListView.as_view(), name='garage-home'),
+    
+    path('nome', get_name, name='garage-nome'),
+
 
     path('clientes', ClienteListView.as_view(), name='client-view'),
     path('clientes/<int:pk>/', ClienteDetailView.as_view(), name='client-detail'),

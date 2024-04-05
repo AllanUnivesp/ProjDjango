@@ -19,8 +19,8 @@ class ClientesAdmin(admin.ModelAdmin):
 
 @admin.register(Veiculo)
 class VeiculosAdmin(admin.ModelAdmin):
-    list_display = ['marca','modelo' , 'motor', 'ano', 'data_criacao']
-    prepopulated_fields = {'slug': ('marca',)}
+    list_display = ['slug','marca','modelo' , 'motor', 'ano', 'data_criacao','id']
+    prepopulated_fields = {'slug': ('marca', 'placa')}
     
     
 @admin.register(CadastroPecas)
@@ -31,6 +31,6 @@ class CadastroPecasAdmin(admin.ModelAdmin):
 
 @admin.register(Ordem)
 class OrdemAdmin(admin.ModelAdmin):
-    list_display = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'data_ordem', 'veiculo_id', 'cliente_id']
+    list_display = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'data_ordem', 'cliente_id']
     prepopulated_fields = {'slug': ('titulo',)}
     

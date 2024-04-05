@@ -2,16 +2,103 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Cadastro de Nova Ordem de Serviço</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Criar</button>
-            </div>
+      <form method="POST">
+        {% csrf_token %}
 
-        </form>
+        <div class="form-group col-md-12">
+          {{ form.titulo|as_crispy_field }}
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            {{ form.status|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6">
+            {{ form.condicao|as_crispy_field }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            {{ form.diagnostico|as_crispy_field }}
+          </div>
+  
+        </div>
+
+        <div class="row">
+          <div class="form-group col-6">
+            {{ form.veiculo_id|as_crispy_field }}
+          </div>
+          <div class="form-group col-2">
+            <img src="/media/icon-addlink.svg"class="btn btn-plus"  data-bs-toggle="modal" data-bs-target="#veiculoModal" alt="...">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-6">
+            {{ form.cliente_id|as_crispy_field }}
+          </div>
+          <div class="form-group col-2">
+            <img src="/media/icon-addlink.svg"class="btn btn-plus"  data-bs-toggle="modal" data-bs-target="#clienteModal" alt="...">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-outline-info" type="submit">
+            Criar Ordem
+          </button>
+        </div>
+        
+      </form>
     </div>
+
+  
+    
+    <!-- Modal 2 criacao de clientes-->
+    <div class="modal fade" id="clienteModal" tabindex="-1" aria-labelledby="clienteModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="clienteModal">Criação de Cliente</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        <div class="modal-body">
+          ...
+          {% include "garage/ordens/clientes_subform.html" %}
+          ...
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Criar</button>
+      </div>
+      
+    </div>
+    </div>
+  </div>
+  
+
+  
+  <!-- Modal 1 criacao de veiculos-->
+  <div class="modal fade" id="veiculoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="veiculoModal">Criação de Veículo</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+          {% include "garage/ordens/veiculos_subform.html" %}
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Criar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 {% endblock content %}

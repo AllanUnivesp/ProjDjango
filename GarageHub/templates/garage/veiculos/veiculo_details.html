@@ -8,8 +8,8 @@
         <small class="text-muted">{{ object.data_criacao|date:"F d, Y" }}</small>
         {% if object.nome != user %}
           <div>
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:client-update' object.id %}">Update</a>
-            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'garage:client-delete' object.id %}">Delete</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:veiculo-update' object.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'garage:veiculo-delete' object.id %}">Delete</a>
           </div>
         {% endif %}
       </div>

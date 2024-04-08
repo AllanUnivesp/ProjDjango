@@ -11,7 +11,7 @@
         <article class="media content-section" >
           <div class="media-body">
             <div class="article-metadata">
-              id:<a class="mr-2" href="#">{{ ordem.id }}</a>
+              {% comment %} id:<a class="mr-2" href="#">{{ ordem.id }}</a> {% endcomment %}
               <small class="text-muted">{{ ordem.data_ordem }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'garage:ordem-detail' ordem.id %}">{{ ordem.titulo }}</a></h2>

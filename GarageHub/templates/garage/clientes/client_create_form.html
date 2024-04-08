@@ -6,14 +6,13 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Cadastro de Novo Cliente</legend>
-
-                {{form.nome|as_crispy_field}}
-                {{form.n_cpf|as_crispy_field}}
-                {{form.endereco|as_crispy_field}}
-                {{form.bairro|as_crispy_field}}
-                {{form.cidade|as_crispy_field}}
-                {{form.cep|as_crispy_field}}
-
+                {{ form.nome|as_crispy_field }}
+                {{ form.n_cpf|as_crispy_field }}
+                {{ form.endereco|as_crispy_field }}
+                {{ form.bairro|as_crispy_field }}
+                {{ form.cidade|as_crispy_field }}
+                {{ form.cep|as_crispy_field }}
+                {{ form.email|as_crispy_field }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Criar</button>

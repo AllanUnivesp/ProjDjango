@@ -5,22 +5,24 @@
     <div class="media-body">
       <div class="article-metadata">
         id:<a class="mr-2" href="#">{{ object.id }}</a>
-        <small class="text-muted">{{ object.data_criacao|date:"F d, Y" }}</small>
+        <small class="text-muted">{{ object.data_ordem|date:"F d, Y" }}</small>
         {% if object.nome != user %}
           <div>
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:client-update' object.id %}">Update</a>
-            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'garage:client-delete' object.id %}">Delete</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:ordem-update' object.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'garage:ordem-delete' object.id %}">Delete</a>
           </div>
         {% endif %}
       </div>
-      <h2 class="article-title">{{ object.nome }}</h2>
-      <p class="article-content">{{ object.content }}</p>
-      <p class="article-content">{{ object.endereco }}</p>
-      <p class="article-content">{{ object.cidade }}</p>
-      <p class="article-content">{{ object.bairro }}</p>
-      <p class="article-content">{{ object.cep }}</p>
-      <p class="article-content">{{ object.email }}</p>
+      <h2 class="article-title">{{ object.titulo }}</h2>
+      <p class="article-content"><strong>Descrição: </strong>{{object.descricao }}</p>
+      <p class="article-content"><strong>Condição: </strong>{{ object.get_condicao_display }}</p>
+      <p class="article-content"><strong>Status: </strong>{{ object.get_status_display }}</p>
+      <p class="article-content"><strong>Diagnóstico: </strong>{{ object.diagnostico }}</p>
+      <p class="article-content"><strong>Cliente: </strong>{{ object.cliente_id }}</p>
+      <p class="article-content"><strong>Veículo: </strong>{{ object.veiculo_id }}</p>
 
     </div>
   </article>
 {% endblock content %}
+
+

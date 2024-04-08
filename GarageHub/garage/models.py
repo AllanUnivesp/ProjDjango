@@ -19,6 +19,9 @@ class Cliente(models.Model):
     data_criacao = models.DateTimeField(auto_now_add=True)
     email = models.CharField(max_length=100)
     
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.nome)
+        super(Cliente, self).save(*args, **kwargs)
     
     def __str__(self):
         return self.nome
@@ -73,14 +76,15 @@ class Ordem(models.Model):
     veiculo_id = models.ForeignKey(Veiculo, on_delete=models.CASCADE)
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.titulo)
+        super(Ordem, self).save(*args, **kwargs)
     
-    
-
     def __str__(self):
         return self.titulo
 
     def get_absolute_url(self):
-        return reverse('ordem-detail', args=[self.id])
+        return reverse('garage:ordem-detail', args=[self.id])
 
 class CadastroPecas(models.Model):
     nome = models.CharField(max_length=150, default='sem nome')

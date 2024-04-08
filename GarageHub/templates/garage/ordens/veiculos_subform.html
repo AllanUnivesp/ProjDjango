@@ -1,7 +1,15 @@
 {% load crispy_forms_tags %}
 
-<form action="/your-name/" method="post">
-    {% csrf_token %}
-    {{ form_veiculos|crispy }}
-    <input type="submit" value="Submit">
-</form>
+<div class="content-section">
+    <form method="POST_VEICULO">
+        {% csrf_token %}
+        <fieldset class="criarveiculo">
+            <legend class="border-bottom mb-4">Cadastro de Novo Veículo</legend>
+                {{ form_veiculos|crispy }}
+
+        </fieldset>
+        <div class="criarveiculo" value="criarveiculo">
+            <button class="btn btn-outline-info" type="submit">Criar !!!</button>
+        </div>
+    </form>
+</div>

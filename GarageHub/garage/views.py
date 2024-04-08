@@ -9,34 +9,31 @@ from django.views.generic import (
     UpdateView,
     DeleteView
     )
-from .models import Post, Cliente, Veiculo, Ordem
-from .forms import OrdemForm, VeiculosForm, ClientesForm
+from .models import Cliente, Veiculo, Ordem
 
-def get_name(request):
-    print('esta entrando aqui')
-    if request.method == 'POST':
-        form = VeiculosForm(request.POST)
-        if form.is_valid():
-            print('esta entrando aqui1')
+
+# def get_name(request):
+#     print('esta entrando aqui')
+#     if request.method == 'POST':
+#         form = VeiculosForm(request.POST)
+#         if form.is_valid():
+#             print('esta entrando aqui1')
             
-            return HttpResponseRedirect('/')
-    else:
-        # form = OrdemForm()
-        form = VeiculosForm()
-        print('esta entrando aqui2')
-    return render(request, 'garage/ordens/name.html', {'form':form})
+#             return HttpResponseRedirect('/')
+#     else:
+#         # form = OrdemForm()
+#         form = VeiculosForm()
+#         print('esta entrando aqui2')
+#     return render(request, 'garage/ordens/name.html', {'form':form})
 
+# def post_list(request):
+#     posts = Post.published.all()
+#     return render(request, 'garage/post/list.html', {'posts':posts})
 
-
-
-def post_list(request):
-    posts = Post.published.all()
-    return render(request, 'garage/post/list.html', {'posts':posts})
-
-def post_detail(request, id):
-    post = get_object_or_404(Post, id=id, status=Post.Status.PUBLISHED)
+# def post_detail(request, id):
+#     post = get_object_or_404(Post, id=id, status=Post.Status.PUBLISHED)
     
-    return render(request, 'garage/post/detail.html', {'post': post})
+#     return render(request, 'garage/post/detail.html', {'post': post})
 
 def home(request):
     context = {
@@ -64,14 +61,13 @@ class ClienteDetailView(DetailView):
     
 class ClienteCreateView(CreateView):
     model = Cliente
-    # fields = vars(Cliente).keys() #para pegar a lista direto do modelo em models.py
     fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep', 'email']
     template_name = 'garage/clientes/client_create_form.html'
     
     
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     form.instance.author = self.request.user
+    #     return super().form_valid(form)
     
 class ClienteDeleteView(DeleteView):
     model = Cliente
@@ -80,19 +76,19 @@ class ClienteDeleteView(DeleteView):
     
 class ClienteUpdateView(UpdateView):
     model = Cliente
-    fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep', 'data_criacao']
+    fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep']
     template_name = 'garage/clientes/client_update_form.html'
 
     
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     form.instance.author = self.request.user
+    #     return super().form_valid(form)
 
-    def test_func(self):
-        post = self.get_object()
-        if self.request.user == post.author:
-            return True
-        return False
+    # def test_func(self):
+    #     post = self.get_object()
+    #     if self.request.user == post.author:
+    #         return True
+    #     return False
  
 class VeiculoListView(ListView):
     model = Veiculo
@@ -109,9 +105,9 @@ class VeiculoCreateView(CreateView):
     fields = ['marca','modelo', 'placa', 'motor', 'ano']
     template_name = 'garage/veiculos/veiculo_create_form.html'
     
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     form.instance.author = self.request.user
+    #     return super().form_valid(form)
     
 class VeiculoDeleteView(DeleteView):
     model = Veiculo
@@ -120,7 +116,7 @@ class VeiculoDeleteView(DeleteView):
     
 class VeiculoUpdateView(UpdateView):
     model = Veiculo
-    fields = ['marca','modelo', 'placa', 'motor', 'ano', 'data_criacao']
+    fields = ['marca','modelo', 'placa', 'motor', 'ano']
     template_name = 'garage/veiculos/veiculo_update_form.html'
     
     def form_valid(self, form):
@@ -138,33 +134,23 @@ class OrdemDetailView(DetailView):
     model = Ordem
     template_name = 'garage/ordens/ordem_details.html'
     
+
 class OrdemCreateView(CreateView):
     model = Ordem
     fields = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'veiculo_id', 'cliente_id']
     template_name = 'garage/ordens/ordem_create_form.html'
-    
-    def get_context_data(self, **kwargs):
-        form_veiculos = VeiculosForm
-        form_clientes = ClientesForm
-        context = super().get_context_data(**kwargs)
-        context['form_veiculos'] = form_veiculos
-        context['form_clientes'] = form_clientes
-        
-        return context
-    
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+
     
 class OrdemDeleteView(DeleteView):
     model = Ordem
-    success_url = '/garage/ordems'
-    template_name = 'garage/ordems/ordem_confirm_delete.html'
+    success_url = '/garage/ordens'
+    template_name = 'garage/ordens/ordem_confirm_delete.html'
     
 class OrdemUpdateView(UpdateView):
     model = Ordem
-    fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep', 'data_criacao']
+    fields = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'veiculo_id', 'cliente_id']
     template_name = 'garage/ordens/ordem_update_form.html'
+    success_url = '/garage/ordens'
     
     def form_valid(self, form):
         form.instance.author = self.request.user

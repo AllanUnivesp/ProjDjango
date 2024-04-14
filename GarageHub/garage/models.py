@@ -18,6 +18,7 @@ class Cliente(models.Model):
     cep = models.CharField(max_length=9)
     data_criacao = models.DateTimeField(auto_now_add=True)
     email = models.CharField(max_length=100)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.nome)
@@ -37,6 +38,7 @@ class Veiculo(models.Model):
     motor = models.CharField(max_length=150)
     ano = models.CharField(max_length=50)
     data_criacao = models.DateField(auto_now_add=True)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
     
     
     def save(self, *args, **kwargs):
@@ -72,9 +74,10 @@ class Ordem(models.Model):
     condicao = models.CharField(choices=CONDICOES_VEICULO,default='Normal - Proprietário veio rodando', max_length=100)
     descricao = models.CharField(max_length=150)
     diagnostico = models.TextField(max_length=150, default='Descreva o problema observado')
-    data_ordem = models.DateField(auto_now_add=True)
+    data_criacao = models.DateField(auto_now_add=True)
     veiculo_id = models.ForeignKey(Veiculo, on_delete=models.CASCADE)
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.titulo)

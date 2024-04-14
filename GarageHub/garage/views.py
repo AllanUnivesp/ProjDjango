@@ -1,6 +1,5 @@
-from typing import Any
-from django.forms import BaseModelForm
-from django.http import HttpResponse, HttpResponseRedirect
+# from django.forms import BaseModelForm
+# from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import (
     ListView,
@@ -10,6 +9,9 @@ from django.views.generic import (
     DeleteView
     )
 from .models import Cliente, Veiculo, Ordem
+
+# from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 # def get_name(request):
@@ -46,7 +48,7 @@ class HomeListView(ListView):
     model = Ordem
     template_name = 'garage/home.html'
     context_object_name = 'ordens'
-    ordering = ['-data_ordem']
+    ordering = ['-data_criacao']
 
 
 class ClienteListView(ListView):
@@ -65,9 +67,9 @@ class ClienteCreateView(CreateView):
     template_name = 'garage/clientes/client_create_form.html'
     
     
-    # def form_valid(self, form):
-    #     form.instance.author = self.request.user
-    #     return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
     
 class ClienteDeleteView(DeleteView):
     model = Cliente

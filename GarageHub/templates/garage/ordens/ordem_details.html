@@ -4,8 +4,11 @@
     {% comment %} <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}"> {% endcomment %}
     <div class="media-body">
       <div class="article-metadata">
-        id:<a class="mr-2" href="#">{{ object.id }}</a>
-        <small class="text-muted">{{ object.data_ordem|date:"F d, Y" }}</small>
+        <small class="text-muted">
+          {% comment %} <strong>id:</strong><a class="mr-2" href="#">{{object.id}}</a> {% endcomment %}
+          <strong> Criado por: <a class="mr-2" href="#"></strong>{{object.autor}}</a>
+          <strong> Data: </strong>{{object.data_criacao|date:"F d, Y"}} 
+        </small>
         {% if object.nome != user %}
           <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:ordem-update' object.id %}">Update</a>

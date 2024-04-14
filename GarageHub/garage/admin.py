@@ -31,6 +31,6 @@ class CadastroPecasAdmin(admin.ModelAdmin):
 
 @admin.register(Ordem)
 class OrdemAdmin(admin.ModelAdmin):
-    list_display = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'data_ordem', 'cliente_id']
+    list_display = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'data_criacao', 'cliente_id']
     prepopulated_fields = {'slug': ('titulo',)}
     

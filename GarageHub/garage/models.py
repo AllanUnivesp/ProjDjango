@@ -39,6 +39,7 @@ class Veiculo(models.Model):
     ano = models.CharField(max_length=50)
     data_criacao = models.DateField(auto_now_add=True)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
+
     
     
     def save(self, *args, **kwargs):
@@ -78,6 +79,7 @@ class Ordem(models.Model):
     veiculo_id = models.ForeignKey(Veiculo, on_delete=models.CASCADE)
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
+    observacoes = models.CharField(max_length=250, blank=all)
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.titulo)

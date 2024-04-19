@@ -9,10 +9,9 @@ from django.views.generic import (
     DeleteView
     )
 from .models import Cliente, Veiculo, Ordem
+from .forms import ClientesForm, VeiculosForm, OrdemForm
 
 # from django.contrib.auth.mixins import LoginRequiredMixin
-
-
 
 # def get_name(request):
 #     print('esta entrando aqui')
@@ -63,14 +62,10 @@ class ClienteDetailView(DetailView):
     
 class ClienteCreateView(CreateView):
     model = Cliente
-    fields = ['nome', 'n_cpf', 'endereco', 'bairro', 'cidade', 'cep', 'email']
     template_name = 'garage/clientes/client_create_form.html'
+    form_class = ClientesForm
     
-    
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-    
+ 
 class ClienteDeleteView(DeleteView):
     model = Cliente
     success_url = '/garage/clientes'
@@ -82,16 +77,6 @@ class ClienteUpdateView(UpdateView):
     template_name = 'garage/clientes/client_update_form.html'
 
     
-    # def form_valid(self, form):
-    #     form.instance.author = self.request.user
-    #     return super().form_valid(form)
-
-    # def test_func(self):
-    #     post = self.get_object()
-    #     if self.request.user == post.author:
-    #         return True
-    #     return False
- 
 class VeiculoListView(ListView):
     model = Veiculo
     template_name = 'garage/veiculos/veiculo_home.html'
@@ -104,12 +89,9 @@ class VeiculoDetailView(DetailView):
     
 class VeiculoCreateView(CreateView):
     model = Veiculo
-    fields = ['marca','modelo', 'placa', 'motor', 'ano']
     template_name = 'garage/veiculos/veiculo_create_form.html'
+    form_class = VeiculosForm
     
-    # def form_valid(self, form):
-    #     form.instance.author = self.request.user
-    #     return super().form_valid(form)
     
 class VeiculoDeleteView(DeleteView):
     model = Veiculo
@@ -135,12 +117,12 @@ class OrdemListView(ListView):
 class OrdemDetailView(DetailView):
     model = Ordem
     template_name = 'garage/ordens/ordem_details.html'
-    
+
 
 class OrdemCreateView(CreateView):
     model = Ordem
-    fields = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'veiculo_id', 'cliente_id']
     template_name = 'garage/ordens/ordem_create_form.html'
+    form_class = OrdemForm
 
     
 class OrdemDeleteView(DeleteView):
@@ -150,7 +132,7 @@ class OrdemDeleteView(DeleteView):
     
 class OrdemUpdateView(UpdateView):
     model = Ordem
-    fields = ['titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'veiculo_id', 'cliente_id']
+    form_class = OrdemForm
     template_name = 'garage/ordens/ordem_update_form.html'
     success_url = '/garage/ordens'
     

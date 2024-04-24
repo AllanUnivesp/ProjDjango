@@ -65,8 +65,8 @@ class Ordem(models.Model):
         ('A', 'Em Execução - aprovado pelo cliente'),
         ('B', 'Em Aberto -  aguardando aprovação pelo cliente'),
         ('C', 'Em Aberto -  aguardando peças'),
-        ('D', 'Finallizado'),
-        ('E', 'Finallizado - interrompido pelo cliente')
+        ('D', 'Finalizado'),
+        ('E', 'Finalizado - interrompido pelo cliente')
     )
 
     titulo = models.CharField(max_length=50)

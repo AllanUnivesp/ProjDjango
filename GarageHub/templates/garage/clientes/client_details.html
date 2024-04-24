@@ -1,29 +1,34 @@
 {% extends "garage/base.html" %}
 {% block content %}
+  <!-- Detalhes do cliente -->
   <article class="media content-section">
-    {% comment %} <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}"> {% endcomment %}
+    {% comment %}
+    <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+    {% endcomment %}
     <div class="media-body">
+      <!-- Metadados do cliente -->
       <div class="article-metadata">
         <small class="text-muted">
-          {% comment %} <strong>id:</strong><a class="mr-2" href="#">{{object.id}}</a> {% endcomment %}
-          <strong> Criado por: <a class="mr-2" href="#"></strong>{{object.autor}}</a>
-          <strong> Data: </strong>{{object.data_criacao|date:"F d, Y"}} 
-
+          <!-- Criado por -->
+          <strong>Criado por:</strong> <a class="mr-2" href="#">{{ object.autor }}</a>
+          <!-- Data de criação -->
+          <strong>Data de criação:</strong> {{ object.data_criacao|date:"F d, Y" }} 
         </small>
+        <!-- Botões de ação (Editar e Excluir) -->
         {% if object.nome != user %}
           <div>
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:client-update' object.id %}">Update</a>
-            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'garage:client-delete' object.id %}">Delete</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:client-update' object.id %}">Editar</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'garage:client-delete' object.id %}">Excluir</a>
           </div>
         {% endif %}
       </div>
-      <h2 class="article-title">{{object.nome}}</h2>
-      <p class="article-content"><strong>Endereço: </strong>{{object.endereco}}</p>
-      <p class="article-content"><strong>Cidade: </strong>{{object.cidade}}</p>
-      <p class="article-content"><strong>Bairro: </strong>{{object.bairro}}</p>
-      <p class="article-content"><strong>CEP: </strong>{{object.cep}}</p>
-      <p class="article-content"><strong>E-mail: </strong>{{object.email}}</p>
-
+      <!-- Informações do cliente -->
+      <h2 class="article-title">{{ object.nome }}</h2>
+      <p class="article-content"><strong>Endereço:</strong> {{ object.endereco }}</p>
+      <p class="article-content"><strong>Cidade:</strong> {{ object.cidade }}</p>
+      <p class="article-content"><strong>Bairro:</strong> {{ object.bairro }}</p>
+      <p class="article-content"><strong>CEP:</strong> {{ object.cep }}</p>
+      <p class="article-content"><strong>E-mail:</strong> {{ object.email }}</p>
     </div>
   </article>
 {% endblock content %}

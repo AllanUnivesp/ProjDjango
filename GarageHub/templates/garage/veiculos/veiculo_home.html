@@ -1,44 +1,22 @@
 {% extends "garage/base.html" %}
 {% block content %}
 
-
 <div class="form-group">
   <a class="btn btn-success btn-sm mt-1 mb-1" href="{% url 'garage:veiculo-create' %}">Criar</a>
 </div>
+
 {% for veiculo in veiculos %}
 <article class="media content-section">
   <div class="media-body">
-      <div class="article-metadata">
-          <small class="text-muted">{{ veiculo.data_criacao|date:"d " }} de {{ veiculo.data_criacao|date:"F" }} de {{ veiculo.data_criacao|date:"Y" }} </small>
-      </div>
-      <h2><a class="article-title" href="{% url 'garage:veiculo-detail' veiculo.id %}" >{{ veiculo.slug }}</a></h2>
-
-      <p class="classificacao"><strong>Veículo:</strong> {{ veiculo.marca }} {{ veiculo.modelo }}, {{veiculo.ano}}</p>
-      <p class="classificacao"><strong>Placa:</strong> {{ veiculo.placa }}</p>
-      <p class="classificacao"><strong>Motor:</strong> {{ veiculo.motor }}</p>
-
-  </div>
-
-  <div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    <div class="article-metadata">
+      <small class="text-muted">{{ veiculo.data_criacao|date:"d " }} de {{ veiculo.data_criacao|date:"F" }} de {{ veiculo.data_criacao|date:"Y" }} </small>
     </div>
+    <h2><a class="article-title" href="{% url 'garage:veiculo-detail' veiculo.id %}" >{{ veiculo.marca }} {{ veiculo.modelo }}</a></h2>
+    <p class="classificacao"><strong>Veículo:</strong> {{ veiculo.marca }} {{ veiculo.modelo }}, {{ veiculo.ano }}</p>
+    <p class="classificacao"><strong>Placa:</strong> {{ veiculo.placa }}</p>
+    <p class="classificacao"><strong>Motor:</strong> {{ veiculo.motor }}</p>
   </div>
-</div>
 </article>
-
 {% endfor %}
 
 {% endblock content %}
-

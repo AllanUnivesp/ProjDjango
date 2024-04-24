@@ -1,29 +1,27 @@
 {% extends "garage/base.html" %}
 
-
 {% block content %}
 <div class="p-4 p-md-2 mb-4 rounded text-body-emphasis bg-body-secondary">
     <h1>Ordens de Serviços</h1>
     <p class="lead my-3">Utilize os filtros pré-programados para melhorar sua busca.</p>
     <div class="button-box col-lg-12">
-
-      <button type="button" class="btn btn-primary">Ordens Em Andamento</button>
-      <button type="button" class="btn btn-primary">Ordens Concluídas</button>
-      <button type="button" class="btn btn-primary">Ordens Agendadas</button>
+        <button type="button" class="btn btn-primary">Ordens Em Andamento</button>
+        <button type="button" class="btn btn-primary">Ordens Concluídas</button>
+        <button type="button" class="btn btn-primary">Ordens Agendadas</button>
     </div>
 </div>
-    {% for ordem in ordens %}
-        <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              {% comment %} <a class="mr-2" href="#">{{ ordem.id }}</a> {% endcomment %}
-              <small class="text-muted">{{ ordem.data_ordem }}</small>
-            </div>
-            <h2><a class="article-title" href="{% url 'garage:ordem-detail' ordem.id %}">{{ ordem.titulo }}</a></h2>
-            <p class="article-content">{{ ordem.cliente_id }}</p>
-            <p class="article-content">{{ ordem.veiculo_id }}</p>
-            <p class="article-content">{{ ordem.descricao }}</p>
-          </div>
-        </article>
-    {% endfor %}
+{% for ordem in ordens %}
+<!-- Cada ordem de serviço é representada por um artigo -->
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <small class="text-muted">{{ ordem.data_ordem }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'garage:ordem-detail' ordem.id %}">{{ ordem.titulo }}</a></h2>
+        <p class="article-content"><strong>Cliente:</strong> {{ ordem.cliente_id }}</p>
+        <p class="article-content"><strong>Veículo:</strong> {{ ordem.veiculo_id }}</p>
+        <p class="article-content"><strong>Descrição:</strong> {{ ordem.descricao }}</p>
+    </div>
+</article>
+{% endfor %}
 {% endblock content %}

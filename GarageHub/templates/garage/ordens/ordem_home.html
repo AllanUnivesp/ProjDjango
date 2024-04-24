@@ -1,33 +1,25 @@
 {% extends "garage/base.html" %}
 
-
 {% block content %}
-
-<div class="form-group">
+  <div class="form-group">
     <a class="btn btn-success btn-sm mt-1 mb-1" href="{% url 'garage:ordem-create' %}">Criar</a>
-
-</div>
-    {% for ordem in ordens %}
-        <article class="media content-section" >
-          <div class="media-body">
-            <div class="article-metadata">
-              {% comment %} id:<a class="mr-2" href="#">{{ ordem.id }}</a> {% endcomment %}
-              <small class="text-muted">{{ ordem.data_ordem }}</small>
-            </div>
-            <h2><a class="article-title" href="{% url 'garage:ordem-detail' ordem.id %}">{{ ordem.titulo }}</a></h2>
-            <p class="article-content"><strong>Descrição: </strong>{{ ordem.descricao }}</p>
-            <p class="article-content"><strong>Condição: </strong>{{ ordem.get_condicao_display }}</p>
-            <p class="article-content"><strong>Status: </strong>{{ ordem.get_status_display }}</p>
-            <p class="article-content"><strong>Diagnóstico: </strong>{{ ordem.diagnostico }}</p>
-            <p class="article-content"><strong>Observações: </strong>{{ ordem.obvervacoes }}</p>
-            <p class="article-content"><strong>Cliente: </strong>{{ ordem.cliente_id }}</p>
-            <p class="article-content"><strong>Veículo: </strong>{{ ordem.veiculo_id }}</p>
-          </div>
-        </article>
-    {% endfor %}
+  </div>
+  
+  {% for ordem in ordens %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <small class="text-muted">{{ ordem.data_ordem }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'garage:ordem-detail' ordem.id %}">{{ ordem.titulo }}</a></h2>
+        <p class="article-content"><strong>Descrição: </strong>{{ ordem.descricao }}</p>
+        <p class="article-content"><strong>Condição: </strong>{{ ordem.get_condicao_display }}</p>
+        <p class="article-content"><strong>Status: </strong>{{ ordem.get_status_display }}</p>
+        <p class="article-content"><strong>Diagnóstico: </strong>{{ ordem.diagnostico }}</p>
+        <p class="article-content"><strong>Observações: </strong>{{ ordem.observacoes }}</p>
+        <p class="article-content"><strong>Cliente: </strong>{{ ordem.cliente_id }}</p>
+        <p class="article-content"><strong>Veículo: </strong>{{ ordem.veiculo_id }}</p>
+      </div>
+    </article>
+  {% endfor %}
 {% endblock content %}
-
-
-
-
-{% comment %} titulo', 'status', 'condicao', 'descricao', 'diagnostico', 'data_ordem', 'veiculo_id', 'cliente_id' {% endcomment %}

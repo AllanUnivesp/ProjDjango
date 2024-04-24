@@ -2,17 +2,20 @@
 
 from django.db import migrations
 
-
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('garage', '0004_ordem_autor_veiculo_autor'),
+        ('garage', '0004_ordem_autor_veiculo_autor'), # Migração anterior
     ]
 
     operations = [
+        # Renomeia o campo 'data_ordem' para 'data_criacao' no modelo 'Ordem'
         migrations.RenameField(
             model_name='ordem',
             old_name='data_ordem',
             new_name='data_criacao',
+            # Adicione um comentário explicando a finalidade da renomeação
+            # e como o novo nome reflete melhor a função do campo
+            # 'data_criacao': 'Data de criação da ordem'
         ),
     ]

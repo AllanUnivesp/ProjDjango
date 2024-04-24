@@ -1,21 +1,23 @@
-{% extends "garage/base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Cadastro de Novo Veículo</legend>
-                {{ form.marca|as_crispy_field }}
-                {{ form.modelo|as_crispy_field }}
-                {{ form.ano|as_crispy_field }}
-                {{ form.motor|as_crispy_field }}
-                {{ form.placa|as_crispy_field }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Criar</button>
-            </div>
+from django.contrib.admin.views.decorators import staff_member_required
+from django.shortcuts import render, redirect
+from .forms import SeuFormularioDeVeiculo
 
-        </form>
-    </div>
-{% endblock content %}
+# Decorator para garantir que apenas funcionários tenham acesso
+@staff_member_required
+def criar_veiculo(request):
+    # Verifica se a requisição é POST (envio do formulário)
+    if request.method == 'POST':
+        # Instancia o formulário com os dados da requisição
+        form = SeuFormularioDeVeiculo(request.POST)
+        # Verifica se o formulário é válido
+        if form.is_valid():
+            # Processa e salva os dados do formulário no banco de dados
+            form.save()
+            # Redireciona para a página de lista de veículos após o sucesso
+            return redirect('garage:veiculo-list')  # Altere conforme sua estrutura de URL
+    else:
+        # Se a requisição não for POST, cria um novo formulário em branco
+        form = SeuFormularioDeVeiculo()
+    
+    # Renderiza a página de criação de veículo com o formulário
+    return render(request, 'seu_template.html', {'form': form})

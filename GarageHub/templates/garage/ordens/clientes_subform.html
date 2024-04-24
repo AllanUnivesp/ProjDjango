@@ -1,7 +1,7 @@
 {% load crispy_forms_tags %}
 
-<form action="/your-name/" method="post">
+<form action="{% url 'garage:client-create' %}" method="post">
     {% csrf_token %}
     {{ form_clientes|crispy }}
-    <input type="submit" value="Submit">
+    <button type="submit">Submit</button>
 </form>

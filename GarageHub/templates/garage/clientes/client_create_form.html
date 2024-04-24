@@ -7,18 +7,25 @@
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Cadastro de Novo Cliente</legend>
                 {{ form.nome|as_crispy_field }}
+                {{ form.nome.label_tag }}
                 {{ form.autor|as_crispy_field }}
+                {{ form.autor.label_tag }}
                 {{ form.n_cpf|as_crispy_field }}
+                {{ form.n_cpf.label_tag }}
                 {{ form.endereco|as_crispy_field }}
+                {{ form.endereco.label_tag }}
                 {{ form.bairro|as_crispy_field }}
+                {{ form.bairro.label_tag }}
                 {{ form.cidade|as_crispy_field }}
+                {{ form.cidade.label_tag }}
                 {{ form.cep|as_crispy_field }}
+                {{ form.cep.label_tag }}
                 {{ form.email|as_crispy_field }}
+                {{ form.email.label_tag }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Criar</button>
             </div>
-
         </form>
     </div>
 {% endblock content %}

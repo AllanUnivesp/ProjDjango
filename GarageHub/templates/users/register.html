@@ -2,24 +2,27 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<form method="POST">
-    {% csrf_token %}
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
 
-    <fieldset class="form-group">
-        <legend class="border-bottom mb-4"> Página de registro de usuários </legend>
-        {{form|crispy}}
-    </fieldset>
+        <!-- Formulário de registro de usuários -->
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"> Página de registro de usuários </legend>
+            {{form|crispy}}
+        </fieldset>
 
-<div class="form-group">
-    <button class="btn btn-outline-info" type="submit"> Registrar </button>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit"> Registrar </button>
+        </div>
+
+    </form>
+
+    <!-- Link para página de login -->
+    <div class="border-top pt-3">
+        <small class="text-muted"> Já tem uma conta?
+            <a class="ml-2" href="#"> Entrar </a>
+        </small>
+    </div>
 </div>
-
-</form>
-<div class="border-top pt-3">
-    <small class="text-muted"> Já tem uma conta?
-<a class="ml-2" href="#"> Entrar </a>
-
-    </small>
-</div>
-
 {% endblock content %}

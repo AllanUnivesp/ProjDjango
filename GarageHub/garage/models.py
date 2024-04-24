@@ -22,7 +22,7 @@ class Cliente(models.Model):
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.nome)
-        super().save(*args, **kwargs)
+        super(Cliente, self).save(*args, **kwargs)
     
     def __str__(self):
         return self.nome
@@ -40,9 +40,12 @@ class Veiculo(models.Model):
     data_criacao = models.DateField(auto_now_add=True)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    
+    
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.marca + '-' + self.placa)
-        super().save(*args, **kwargs)
+        self.slug = slugify(self.marca+ '-' +self.placa)
+        super(Veiculo, self).save(*args, **kwargs)
+    
 
     def __str__(self):
         return self.modelo
@@ -51,6 +54,7 @@ class Veiculo(models.Model):
         return reverse('garage:veiculo-detail', args=[self.id])
 
 class Ordem(models.Model):
+
     CONDICOES_VEICULO = (
         ("A", "Normal - Proprietário veio rodando"),
         ("B", "Sem funcionar - veio no guincho"),
@@ -59,27 +63,27 @@ class Ordem(models.Model):
     )
     STATUS_ORDEM = (
         ('A', 'Em Execução - aprovado pelo cliente'),
-        ('B', 'Em Aberto - aguardando aprovação pelo cliente'),
-        ('C', 'Em Aberto - aguardando peças'),
-        ('D', 'Finalizado'),
-        ('E', 'Finalizado - interrompido pelo cliente')
+        ('B', 'Em Aberto -  aguardando aprovação pelo cliente'),
+        ('C', 'Em Aberto -  aguardando peças'),
+        ('D', 'Finallizado'),
+        ('E', 'Finallizado - interrompido pelo cliente')
     )
 
     titulo = models.CharField(max_length=50)
     slug = models.SlugField(max_length=250)
-    status = models.CharField(choices=STATUS_ORDEM, default='A', max_length=100)
-    condicao = models.CharField(choices=CONDICOES_VEICULO, default='A', max_length=100)
+    status = models.CharField(choices=STATUS_ORDEM,default='Em Execução - aprovado pelo cliente', max_length=100)
+    condicao = models.CharField(choices=CONDICOES_VEICULO,default='Normal - Proprietário veio rodando', max_length=100)
     descricao = models.CharField(max_length=150)
     diagnostico = models.TextField(max_length=150, default='Descreva o problema observado')
     data_criacao = models.DateField(auto_now_add=True)
     veiculo_id = models.ForeignKey(Veiculo, on_delete=models.CASCADE)
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
-    observacoes = models.CharField(max_length=250, blank=True)
+    observacoes = models.CharField(max_length=250, blank=all)
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.titulo)
-        super().save(*args, **kwargs)
+        super(Ordem, self).save(*args, **kwargs)
     
     def __str__(self):
         return self.titulo
@@ -98,12 +102,15 @@ class CadastroPecas(models.Model):
     def get_absolute_url(self): 
         return reverse('garage:cadastro-detail', args=[self.id])
 
+
 class PecasServico(models.Model):
     peca_id = models.ForeignKey(CadastroPecas, on_delete=models.CASCADE)
     ordem_id = models.ForeignKey(Ordem, on_delete=models.CASCADE)
 
+
     def get_absolute_url(self):
         return reverse('garage:ordem-detail', args=[self.id])
+
 
 class Post(models.Model):
     class Status(models.TextChoices):
@@ -114,7 +121,8 @@ class Post(models.Model):
     slug = models.SlugField(max_length=250)
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
-                               related_name='garage_post')
+                               related_name='garage_post',
+                               )
 
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
@@ -135,3 +143,5 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    

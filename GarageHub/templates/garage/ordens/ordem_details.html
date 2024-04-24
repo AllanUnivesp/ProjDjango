@@ -6,8 +6,8 @@
       <div class="article-metadata">
         <small class="text-muted">
           {% comment %} <strong>id:</strong><a class="mr-2" href="#">{{object.id}}</a> {% endcomment %}
-          <strong>Criado por: <a class="mr-2" href="#">{{ object.autor }}</a></strong>
-          <strong>Data: </strong>{{ object.data_criacao|date:"F d, Y" }} 
+          <strong> Criado por: <a class="mr-2" href="#"></strong>{{object.autor}}</a>
+          <strong> Data: </strong>{{object.data_criacao|date:"F d, Y"}} 
         </small>
         {% if object.nome != user %}
           <div>
@@ -17,13 +17,16 @@
         {% endif %}
       </div>
       <h2 class="article-title">{{ object.titulo }}</h2>
-      <p class="article-content"><strong>Descrição: </strong>{{ object.descricao }}</p>
+      <p class="article-content"><strong>Descrição: </strong>{{object.descricao }}</p>
       <p class="article-content"><strong>Condição: </strong>{{ object.get_condicao_display }}</p>
       <p class="article-content"><strong>Status: </strong>{{ object.get_status_display }}</p>
       <p class="article-content"><strong>Diagnóstico: </strong>{{ object.diagnostico }}</p>
-      <p class="article-content"><strong>Observações: </strong>{{ object.observacoes }}</p>
-      <p class="article-content"><strong>Cliente: </strong><a href="{% url 'garage:client-detail' object.cliente_id %}">{{ object.cliente_id }}</a></p>
-      <p class="article-content"><strong>Veículo: </strong><a href="{% url 'garage:veiculo-detail' object.veiculo_id %}">{{ object.veiculo_id }}</a></p>
+      <p class="article-content"><strong>Observações: </strong>{{ ordem.obvervacoes }}</p>
+      <p class="article-content"><strong>Cliente: </strong>{{ object.cliente_id }}</p>
+      <p class="article-content"><strong>Veículo: </strong>{{ object.veiculo_id }}</p>
+
     </div>
   </article>
 {% endblock content %}
+
+

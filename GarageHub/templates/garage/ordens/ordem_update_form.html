@@ -1,32 +1,16 @@
 {% extends "garage/base.html" %}
 {% load crispy_forms_tags %}
-
 {% block content %}
     <div class="content-section">
-        <form method="POST" id="update-order-form">
+        <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Atualização da Ordem de Serviço</legend>
+                <legend class="border-bottom mb-4">Atualição da Ordem de Serviço</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Atualizar</button>
             </div>
         </form>
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-success" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
     </div>
-
-    <script>
-        document.getElementById('update-order-form').addEventListener('submit', function(event) {
-            if (!confirm('Tem certeza que deseja atualizar esta ordem de serviço?')) {
-                event.preventDefault(); // Cancela o envio do formulário se o usuário cancelar a confirmação
-            }
-        });
-    </script>
 {% endblock content %}

@@ -1,27 +1,14 @@
 {% extends "garage/base.html" %}
 
 {% block content %}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <article class="minoro-post">
-          <h1 class="minoro-post-title">{{ post.title }}</h1>
-          <p class="minoro-post-meta">Publicado em {{ post.publish }} por {{ post.author }}</p>
-          <p>{{ post.body|linebreaks }}</p>
-        </article>
-      </div>
-      <div class="col-md-4">
-        <div class="minoro-card">
-          <div class="minoro-card-body">
-            <h5 class="minoro-card-title">Outros Posts</h5>
-            <ul class="minoro-list-group">
-              {% for other_post in other_posts %}
-                <li class="minoro-list-group-item"><a href="{% url 'garage:post-detail' other_post.id %}">{{ other_post.title }}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <h1>{{ post.title }}</h1>
+
+  <p class="date">
+
+    Published {{ post.publish }} by {{ post.author }}
+
+  </p>
+
+  {{ post.body|linebreaks }}
 {% endblock %}

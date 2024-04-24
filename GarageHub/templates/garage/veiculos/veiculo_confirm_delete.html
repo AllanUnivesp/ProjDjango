@@ -1,15 +1,16 @@
-from django.contrib.admin.views.decorators import staff_member_required
-from django.shortcuts import get_object_or_404
-from django.views.generic import View
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-
-from .models import Veiculo
-
-@staff_member_required
-def delete_veiculo(request, veiculo_id):
-    veiculo = get_object_or_404(Veiculo, id=veiculo_id)
-    if request.method == 'POST':
-        veiculo.delete()
-        return HttpResponseRedirect(reverse('garage:client-detail', args=[veiculo.cliente_id]))
-    return render(request, 'garage/veiculo_delete.html', {'veiculo': veiculo})
+{% extends "garage/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Delete Post</legend>
+                <h2>Are you sure you want to delete the post "{{ object.nome }}"</h2>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+                <a class="btn btn-outline-secondary" href="{% url 'garage:client-detail' object.id %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

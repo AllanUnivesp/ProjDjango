@@ -1,27 +1,25 @@
 {% extends "garage/base.html" %}
 {% block content %}
-  <article class="media content-section">
-    {% comment %} <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}"> {% endcomment %}
-    <div class="media-body">
-      <div class="article-metadata">
-        <small class="text-muted">
-          {% comment %} <strong>id:</strong><a class="mr-2" href="#">{{object.id}}</a> {% endcomment %}
-          <strong> Criado por: <a class="mr-2" href="#"></strong>{{object.autor}}</a>
-          <strong> Data: </strong>{{object.data_criacao|date:"F d, Y"}} 
-        </small>
-        {% if object.nome != user %}
-          <div>
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:veiculo-update' object.id %}">Update</a>
-            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'garage:veiculo-delete' object.id %}">Delete</a>
-          </div>
-        {% endif %}
-      </div>
-      <h2 class="article-title">{{ object.marca }}</h2>
-      <p class="article-content"><strong>Modelo:</strong> {{ object.modelo }}</p>
-      <p class="article-content"><strong>Motor:</strong> {{ object.motor }}</p>
-      <p class="article-content"><strong>Ano:</strong> {{ object.ano }}</p>
-      <p class="article-content"><strong>Placa:</strong> {{ object.placa }}</p>
-
+<article class="media content-section">
+  {% comment %} <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}"> {% endcomment %}
+  <div class="media-body">
+    <div class="article-metadata">
+      <small class="text-muted">
+        {% comment %} <strong>id:</strong><a class="mr-2" href="#">{{object.id}}</a> {% endcomment %}
+        <strong> Criado por: <a class="mr-2" href="#"></strong>{{object.autor}}</a>
+        <strong> Data: </strong>{{object.data_criacao|date:"F d, Y"}} 
+      </small>
+      {% if object.nome != user %}
+        <div>
+          <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'garage:veiculo-update' object.id %}">Update</a>
+          <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'garage:veiculo-delete' object.id %}">Delete</a>
+        </div>
+      {% endif %}
     </div>
-  </article>
+    <h2 class="article-title">{{ object.marca }} - {{ object.modelo }}</h2>
+    <p class="article-content"><strong>Motor:</strong> {{ object.motor }}</p>
+    <p class="article-content"><strong>Ano:</strong> {{ object.ano }}</p>
+    <p class="article-content"><strong>Placa:</strong> {{ object.placa }}</p>
+  </div>
+</article>
 {% endblock content %}

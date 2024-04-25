@@ -1,25 +1,26 @@
 {% extends "garage/base.html" %}
+
 {% block content %}
-{% load crispy_forms_tags %}
+    {# Carregar as tags do Crispy Forms para renderização do formulário #}
+    {% load crispy_forms_tags %}
 
-<form method="POST">
-    {% csrf_token %}
+    <form method="POST">
+        {% csrf_token %}
 
-    <fieldset class="form-group">
-        <legend class="border-bottom mb-4"> Página de registro de usuários </legend>
-        {{form|crispy}}
-    </fieldset>
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Página de Registro de Usuários</legend>
+            {# Renderizar o formulário com Crispy Forms #}
+            {{ form|crispy }}
+        </fieldset>
 
-<div class="form-group">
-    <button class="btn btn-outline-info" type="submit"> Registrar </button>
-</div>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Registrar</button>
+        </div>
+    </form>
 
-</form>
-<div class="border-top pt-3">
-    <small class="text-muted"> Já tem uma conta?
-<a class="ml-2" href="#"> Entrar </a>
-
-    </small>
-</div>
-
+    <div class="border-top pt-3">
+        <small class="text-muted">Já tem uma conta?
+            <a class="ml-2" href="#">Entrar</a>
+        </small>
+    </div>
 {% endblock content %}

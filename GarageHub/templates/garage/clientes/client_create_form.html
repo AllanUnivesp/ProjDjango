@@ -1,24 +1,37 @@
 {% extends "garage/base.html" %}
 {% load crispy_forms_tags %}
+
 {% block content %}
+    <!-- Conteúdo da página -->
     <div class="content-section">
+        <!-- Formulário de criação de novo cliente -->
         <form method="POST">
             {% csrf_token %}
+            <!-- Grupo de campos do formulário -->
             <fieldset class="form-group">
+                <!-- Título do formulário -->
                 <legend class="border-bottom mb-4">Cadastro de Novo Cliente</legend>
+                <!-- Campo para inserir o nome do cliente -->
                 {{ form.nome|as_crispy_field }}
+                <!-- Campo para inserir o autor do cadastro (opcional) -->
                 {{ form.autor|as_crispy_field }}
+                <!-- Campo para inserir o número do CPF do cliente -->
                 {{ form.n_cpf|as_crispy_field }}
+                <!-- Campo para inserir o endereço do cliente -->
                 {{ form.endereco|as_crispy_field }}
+                <!-- Campo para inserir o bairro do cliente -->
                 {{ form.bairro|as_crispy_field }}
+                <!-- Campo para inserir a cidade do cliente -->
                 {{ form.cidade|as_crispy_field }}
+                <!-- Campo para inserir o CEP do cliente -->
                 {{ form.cep|as_crispy_field }}
+                <!-- Campo para inserir o e-mail do cliente -->
                 {{ form.email|as_crispy_field }}
             </fieldset>
+            <!-- Botão de envio do formulário -->
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Criar</button>
+                <button class="btn btn-outline-info" type="submit">Criar novo cli</button>
             </div>
-
         </form>
     </div>
 {% endblock content %}

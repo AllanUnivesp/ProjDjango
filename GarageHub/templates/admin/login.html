@@ -1,88 +1,85 @@
-
-{% extends "admin/login.html" %}
+{% extends "admin/base_site.html" %}
+{% load static %}
 
 {% block extrastyle %}
     {{ block.super }}
-    <!-- Adicione estilos personalizados aqui, se necessário -->
     <style>
         body {
-            background-color: #f8f9fa;
+            background-image: url("{% static 'img/background.jpg' %}");
+            background-size: cover;
+            background-position: center;
             font-family: Arial, sans-serif;
+            margin: 0; /* Remova as margens para preencher a tela inteira */
+            padding: 0; /* Remova o preenchimento para preencher a tela inteira */
+            color: black; /* Defina a cor do texto como preto */
         }
-        #site-name {
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-            color: #333;
-        }
-        #login-form {
-            background-color: #fff;
+        #login-form-wrapper {
+            position: absolute; /* Posição absoluta para sobrepor o conteúdo */
+            top: 50%; /* Alinhe o topo do formulário ao centro da tela */
+            left: 50%; /* Alinhe a esquerda do formulário ao centro da tela */
+            transform: translate(-50%, -50%); /* Centralize o formulário vertical e horizontalmente */
+            background-color: rgba(255, 255, 255, 0.8); /* Define a cor de fundo com transparência */
             max-width: 400px;
-            margin: 0 auto;
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Defina a sombra com uma cor mais suave */
+        }
+        #login-form-wrapper h1 a {
+            color: black; /* Defina a cor do link como preto */
+            text-decoration: none; /* Remova o sublinhado */
+            font-family: 'Arial Black', Arial, sans-serif; /* Use uma fonte bonita */
+            font-size: 24px; /* Defina o tamanho da fonte */
+        }
+        #login-form {
+            margin-top: 20px; /* Adicione algum espaço entre o título e o formulário */
         }
         .form-row {
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Adicione espaço entre as linhas do formulário */
         }
         label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
+            display: block; /* Coloque os rótulos em uma nova linha */
+            font-weight: bold; /* Torne os rótulos em negrito */
         }
         input[type="text"],
         input[type="password"],
         select {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            width: 100%; /* Faça os campos de entrada ocuparem toda a largura disponível */
+            padding: 10px; /* Adicione algum preenchimento para torná-los mais espaçados */
+            border: 1px solid #ccc; /* Adicione uma borda leve */
+            border-radius: 4px; /* Adicione cantos arredondados */
+            box-sizing: border-box; /* Certifique-se de que o preenchimento e a borda não aumentem a largura total */
         }
         button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            background-color: #62a0e3;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            width: 100%; /* Faça o botão ocupar toda a largura do seu contêiner */
+            padding: 10px; /* Adicione algum preenchimento para torná-lo mais espaçado */
+            background-color: #007bff; /* Defina a cor de fundo */
+            color: white; /* Defina a cor do texto como branco */
+            border: none; /* Remova a borda */
+            border-radius: 4px; /* Adicione cantos arredondados */
+            cursor: pointer; /* Altere o cursor ao passar por cima */
+            transition: background-color 0.3s; /* Adicione uma transição suave */
         }
         button[type="submit"]:hover {
-            background-color: #557da8;
+            background-color: #0056b3; /* Altere a cor de fundo ao passar o mouse */
         }
     </style>
 {% endblock extrastyle %}
 
-{% block branding %}
-    <h1 id="site-name"><a href="{% url 'admin:index' %}">Auto Mecânica Minoro</a></h1>
-{% endblock branding %}
-
 {% block content %}
-    <!-- Adicione o formulário de login aqui -->
-    <form method="post" action="{% url 'admin:login' %}" id="login-form">
-        {% csrf_token %}
-        <div class="form-row">
-            <label for="id_username">Usuário:</label>
-            <input type="text" name="username" autofocus required id="id_username">
-        </div>
-        <div class="form-row">
-            <label for="id_password">Senha:</label>
-            <input type="password" name="password" required id="id_password">
-        </div>
-        <!-- Adicione a seleção de tema aqui -->
-        <div class="form-row">
-            <label for="id_theme">Tema:</label>
-            <select name="theme" id="id_theme">
-                <option value="claro">Claro</option>
-                <option value="escuro">Escuro</option>
-            </select>
-        </div>
-        <button type="submit">Login</button>
-    </form>
+    <div id="login-form-wrapper">
+        <h1 id="site-name"><a href="{% url 'admin:index' %}" style="color: black;">Auto Mecânica Minoro</a></h1>
+        <!-- Adicione o formulário de login aqui -->
+        <form method="post" action="{% url 'admin:login' %}" id="login-form">
+            {% csrf_token %}
+            <div class="form-row">
+                <label for="id_username">Usuário:</label>
+                <input type="text" name="username" autofocus required id="id_username">
+            </div>
+            <div class="form-row">
+                <label for="id_password">Senha:</label>
+                <input type="password" name="password" required id="id_password">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 {% endblock content %}

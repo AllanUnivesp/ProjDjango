@@ -1,5 +1,5 @@
 from django.urls import path, include
-
+from django.contrib.auth.views import LoginView  
 from .views import (
     ClienteListView,
     ClienteDetailView,
@@ -17,12 +17,14 @@ from .views import (
     OrdemListView,
     OrdemUpdateView,
     HomeListView,
+    CustomLoginView,  
 )
 
 app_name = 'garage'
 
 urlpatterns = [
-    path('', HomeListView.as_view(), name='garage-home'),  # Corrigido o nome da URL
+    path('', CustomLoginView.as_view(), name='login'),  
+    path('home/', HomeListView.as_view(), name='home'),  # Adicione a URL para HomeListView
     path('clientes/', ClienteListView.as_view(), name='client-list'),
     path('clientes/new/', ClienteCreateView.as_view(), name='client-create'),
     path('clientes/<int:pk>/', ClienteDetailView.as_view(), name='client-detail'),

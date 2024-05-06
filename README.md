@@ -99,7 +99,7 @@ Veja que após a criação, o ambiente já será ativado, aparecendo o nome dele
 Agora precisamos clonar a aplicação deste repositório do GitHub para isso execute:
 
 ```bash
-git clone https://github.com/AllanUnivesp/ProjDjango.git
+git clone https://github.com/ConradoAlmeida/ProjDjango.git
 ```
 
 ### Instalando os Pré-requisitos do Python

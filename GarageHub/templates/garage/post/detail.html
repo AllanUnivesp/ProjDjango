@@ -1,6 +1,7 @@
 {% extends "garage/base.html" %}
 
 {% block content %}
+<<<<<<< HEAD
     <!-- Título do post -->
     <h1>{{ post.title }}</h1>
 
@@ -12,3 +13,16 @@
     <!-- Corpo do post com quebras de linha -->
     {{ post.body|linebreaks }}
 {% endblock %}
+=======
+
+  <h1>{{ post.title }}</h1>
+
+  <p class="date">
+
+    Published {{ post.publish }} by {{ post.author }}
+
+  </p>
+
+  {{ post.body|linebreaks }}
+{% endblock %}
+>>>>>>> parent of 4bdee90 (Refactor templates and apps configuration)

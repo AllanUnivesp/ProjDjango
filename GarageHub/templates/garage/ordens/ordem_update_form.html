@@ -1,7 +1,7 @@
 {% extends "garage/base.html" %}
 {% load crispy_forms_tags %}
-
 {% block content %}
+<<<<<<< HEAD
 <div class="content-section">
     <!-- Formulário de atualização da ordem de serviço -->
     <form method="POST">
@@ -19,3 +19,18 @@
     </form>
 </div>
 {% endblock content %}
+=======
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Atualição da Ordem de Serviço</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Atualizar</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+>>>>>>> parent of 4bdee90 (Refactor templates and apps configuration)

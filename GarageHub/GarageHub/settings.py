@@ -43,8 +43,11 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     'crispy_bootstrap5',
+<<<<<<< HEAD
     'grappelli',
     'grappelli.dashboard',
+=======
+>>>>>>> parent of 4bdee90 (Refactor templates and apps configuration)
     
 ]
 

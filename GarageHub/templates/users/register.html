@@ -1,5 +1,6 @@
 {% extends "garage/base.html" %}
 
+<<<<<<< HEAD
 {% block content %}
     {# Carregar as tags do Crispy Forms para renderização do formulário #}
     {% load crispy_forms_tags %}
@@ -24,3 +25,26 @@
         </small>
     </div>
 {% endblock content %}
+=======
+<form method="POST">
+    {% csrf_token %}
+
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4"> Página de registro de usuários </legend>
+        {{form|crispy}}
+    </fieldset>
+
+<div class="form-group">
+    <button class="btn btn-outline-info" type="submit"> Registrar </button>
+</div>
+
+</form>
+<div class="border-top pt-3">
+    <small class="text-muted"> Já tem uma conta?
+<a class="ml-2" href="#"> Entrar </a>
+
+    </small>
+</div>
+
+{% endblock content %}
+>>>>>>> parent of 4bdee90 (Refactor templates and apps configuration)

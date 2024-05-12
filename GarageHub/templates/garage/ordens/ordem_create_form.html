@@ -2,57 +2,6 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="content-section">
-<<<<<<< HEAD
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Criar Nova Ordem</legend>
-                <!-- Campos do formulário -->
-                <div class="row">
-                    <div class="col-md-12">
-                        {{ form.titulo|as_crispy_field }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        {{ form.status|as_crispy_field }}
-                    </div>
-                    <div class="col-md-6">
-                        {{ form.condicao|as_crispy_field }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        {{ form.diagnostico|as_crispy_field }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        {{ form.observacoes|as_crispy_field }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        {{ form.veiculo_id|as_crispy_field }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        {{ form.descricao|as_crispy_field }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        {{ form.cliente_id|as_crispy_field }}
-                    </div>
-                </div>
-            </fieldset>
-            <!-- Botão de submissão do formulário -->
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Criar</button>
-            </div>
-        </form>
-=======
       <form method="POST">
        {% csrf_token %}
 
@@ -109,7 +58,6 @@
           <button class="btn btn-outline-info" type="submit">Criar Ordem</button>
         </div>
       </form>
->>>>>>> parent of 4bdee90 (Refactor templates and apps configuration)
     </div>
  
     

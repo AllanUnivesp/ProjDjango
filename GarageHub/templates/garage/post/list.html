@@ -2,22 +2,6 @@
 
 
 {% block content %}
-<<<<<<< HEAD
-    <!-- Loop sobre todos os posts -->
-    {% for post in posts %}
-        <article class="media content-section">
-            <div class="media-body">
-                <!-- Metadados do post: autor e data de postagem -->
-                <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ post.author }}</a>
-                    <small class="text-muted">{{ post.date_posted }}</small>
-                </div>
-                <!-- Título do post com link para detalhes -->
-                <h2><a class="article-title" href="{% url 'garage:post_detail' post.id %}">{{ post.title }}</a></h2>
-                <!-- Conteúdo do post -->
-                <p class="article-content">{{ post.content }}</p>
-            </div>
-=======
     {% for post in posts %}
         <article class="media content-section">
           <div class="media-body">
@@ -28,7 +12,6 @@
             <h2><a class="article-title" href="{% url 'garage:post_detail' post.id %}">{{ post.title }}</a></h2>
             <p class="article-content">{{ post.content }}</p>
           </div>
->>>>>>> parent of 4bdee90 (Refactor templates and apps configuration)
         </article>
     {% endfor %}
 {% endblock content %}

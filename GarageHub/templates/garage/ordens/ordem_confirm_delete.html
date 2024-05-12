@@ -5,20 +5,6 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Remover Ordem</legend>
-<<<<<<< HEAD
-                <!-- Mensagem de confirmação para exclusão da ordem -->
-                <h2>Tem certeza de que deseja excluir a ordem "{{ object.nome }}"?</h2>
-            </fieldset>
-            <div class="form-group">
-                <!-- Botão para confirmar exclusão -->
-                <button class="btn btn-outline-danger" type="submit">Sim, Excluir</button>
-                <!-- Link para cancelar a exclusão e voltar para os detalhes da ordem -->
-                <a class="btn btn-outline-secondary" href="{% url 'garage:ordem-detail' object.id %}">Cancelar</a>
-            </div>
-        </form>
-    </div>
-{% endblock content %}
-=======
                 <h2>Are you sure you want to delete the post "{{ object.nome }}"</h2>
             </fieldset>
             <div class="form-group">
@@ -28,4 +14,3 @@
         </form>
     </div>
 {% endblock content %}
->>>>>>> parent of 4bdee90 (Refactor templates and apps configuration)

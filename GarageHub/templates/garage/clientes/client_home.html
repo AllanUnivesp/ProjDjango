@@ -5,20 +5,6 @@
 <div class="form-group">
   <a class="btn btn-success btn-sm mt-1 mb-1" href="{% url 'garage:client-create' %}">Criar Novo Cliente</a>
 </div>
-<<<<<<< HEAD
-
-<!-- Loop pelos clientes -->
-{% for cliente in clientes %}
-<article class="media content-section">
-  <div class="media-body">
-      <!-- Metadados do cliente -->
-      <div class="article-metadata">
-          <small class="text-muted">{{ cliente.data_criacao|date:"d " }} de {{ cliente.data_criacao|date:"F" }} de {{ cliente.data_criacao|date:"Y" }}</small>
-      </div>
-      <!-- Detalhes do cliente -->
-      <h2><a class="article-title" href="{% url 'garage:client-detail' cliente.id %}" >{{ cliente.nome }}</a></h2>
-      <p class="classificacao"><strong>Endereço:</strong> {{ cliente.endereco }}</p>
-=======
 {% for cliente in clientes %}
 <article class="media content-section">
   <div class="media-body">
@@ -29,15 +15,10 @@
       {% comment %} <p class="attpor"><strong>Última atualização por:</strong> {{ post.atualizadoPor }} </p> {% endcomment %}
       {% comment %} <p class="article-content"> {{ cliente.content }}</p> {% endcomment %}
       <p class="classificacao"><strong>Endenreço:</strong> {{ cliente.endereco }}</p>
->>>>>>> parent of 4bdee90 (Refactor templates and apps configuration)
       <p class="classificacao"><strong>Bairro:</strong> {{ cliente.bairro }}</p>
       <p class="classificacao"><strong>Cidade:</strong> {{ cliente.cidade }}</p>
       <p class="classificacao"><strong>CEP:</strong> {{ cliente.cep }}</p>
       <p class="classificacao"><strong>Número do CPF:</strong> {{ cliente.n_cpf }}</p>
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 4bdee90 (Refactor templates and apps configuration)
   </div>
 </article>
 {% endfor %}

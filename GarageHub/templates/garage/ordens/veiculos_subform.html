@@ -1,8 +1,7 @@
 {% load crispy_forms_tags %}
 
 <div class="content-section">
-    <!-- Formulário para cadastrar um novo veículo -->
-    <form method="POST" action="{% url 'garage:veiculo-create' %}">
+    <form method="POST_VEICULO">
         {% csrf_token %}
         <fieldset class="criarveiculo">
             <!-- Título do formulário -->

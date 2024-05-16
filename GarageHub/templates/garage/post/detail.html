@@ -1,14 +1,14 @@
 {% extends "garage/base.html" %}
 
 {% block content %}
-    <!-- Título do post -->
-    <h1>{{ post.title }}</h1>
 
-    <!-- Data de publicação e autor do post -->
-    <p class="date">
-        Publicado em {{ post.publish }} por {{ post.author }}
-    </p>
+  <h1>{{ post.title }}</h1>
 
-    <!-- Corpo do post com quebras de linha -->
-    {{ post.body|linebreaks }}
+  <p class="date">
+
+    Published {{ post.publish }} by {{ post.author }}
+
+  </p>
+
+  {{ post.body|linebreaks }}
 {% endblock %}

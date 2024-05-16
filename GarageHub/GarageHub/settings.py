@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'grappelli',
     'grappelli.dashboard',
+    
 ]
 
 MIDDLEWARE = [

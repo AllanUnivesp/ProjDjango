@@ -1,6 +1,8 @@
 from django.urls import path, include
 from django.contrib.auth.views import LoginView  
 from .views import (
+    # post_detail,
+    # post_list,
     ClienteListView,
     ClienteDetailView,
     ClienteCreateView,
@@ -19,6 +21,8 @@ from .views import (
     HomeListView,
     CustomLoginView,  
 )
+    # get_name
+    )
 
 app_name = 'garage'
 

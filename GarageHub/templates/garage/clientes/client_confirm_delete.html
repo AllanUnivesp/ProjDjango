@@ -7,27 +7,17 @@
             {% csrf_token %}
             <!-- Grupo de campos -->
             <fieldset class="form-group">
-<<<<<<< HEAD
                 <!-- Título do formulário -->
                 <legend class="border-bottom mb-4">Deletar Cliente</legend>
                 <!-- Mensagem de confirmação -->
                 <h2>Tem certeza de que deseja excluir o cliente "{{ object.nome }}"?</h2>
-=======
-                <legend class="border-bottom mb-4">Delete Post</legend>
-                <h2>Are you sure you want to delete the post "{{ object.nome }}"</h2>
->>>>>>> parent of 4bdee90 (Refactor templates and apps configuration)
             </fieldset>
             <!-- Botões de ação -->
             <div class="form-group">
-<<<<<<< HEAD
                 <!-- Botão de confirmação de exclusão -->
                 <button class="btn btn-outline-danger" type="submit">Sim, Excluir</button>
                 <!-- Botão de cancelamento -->
                 <a class="btn btn-outline-secondary" href="{% url 'garage:client-detail' object.id %}">Cancelar</a>
-=======
-                <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
-                <a class="btn btn-outline-secondary" href="{% url 'garage:client-detail' object.id %}">Cancel</a>
->>>>>>> parent of 4bdee90 (Refactor templates and apps configuration)
             </div>
         </form>
     </div>

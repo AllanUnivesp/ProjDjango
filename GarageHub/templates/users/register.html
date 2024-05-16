@@ -1,23 +1,39 @@
 {% extends "garage/base.html" %}
 
-<form method="POST">
-    {% csrf_token %}
+{% block content %}
+    {# Carregar as tags do Crispy Forms para renderização do formulário #}
+    {% load crispy_forms_tags %}
 
-    <fieldset class="form-group">
-        <legend class="border-bottom mb-4"> Página de registro de usuários </legend>
-        {{form|crispy}}
-    </fieldset>
+    <div class="container mt-5">
+        {# Centraliza o conteúdo na página #}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {# Cria um cartão com sombra para dar destaque ao formulário #}
+                <div class="card shadow-sm">
+                    {# Cabeçalho do cartão com estilo #}
+                    <div class="card-header bg-info text-white">
+                        <h3 class="mb-0">Página de Registro de Usuários</h3>
+                    </div>
+                    {# Corpo do cartão onde o formulário será inserido #}
+                    <div class="card-body">
+                        <form method="POST">
+                            {# Proteção CSRF para segurança do formulário #}
+                            {% csrf_token %}
 
-<div class="form-group">
-    <button class="btn btn-outline-info" type="submit"> Registrar </button>
-</div>
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Página de Registro de Usuários</legend>
+            {# Renderizar o formulário com Crispy Forms #}
+            {{ form|crispy }}
+        </fieldset>
 
-</form>
-<div class="border-top pt-3">
-    <small class="text-muted"> Já tem uma conta?
-<a class="ml-2" href="#"> Entrar </a>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Registrar</button>
+        </div>
+    </form>
 
-    </small>
-</div>
-
+    <div class="border-top pt-3">
+        <small class="text-muted">Já tem uma conta?
+            <a class="ml-2" href="#">Entrar</a>
+        </small>
+    </div>
 {% endblock content %}

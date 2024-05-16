@@ -1,29 +1,44 @@
 {% extends "garage/base.html" %}
-
+{% load static %}
 
 {% block content %}
-<div class="p-4 p-md-2 mb-4 rounded text-body-emphasis bg-body-secondary">
-    <h1>Ordens de Serviços</h1>
-    <p class="lead my-3">Utilize os filtros para melhorar sua busca.</p>
-    <div class="button-box col-lg-12">
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-body">
+            <!-- Cabeçalho personalizado com o logotipo da oficina mecânica -->
+            <h1 class="card-title text-center mb-4"><img src="{% static 'img/logo.gif' %}" alt="Logo da Oficina Mecânica"></h1>
+            <h2 class="card-title text-dark text-center mb-4">Ordens de Serviços</h2>
+            <p class="card-text lead">Utilize os filtros abaixo para melhorar sua busca.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <!-- Ícone de chave inglesa -->
+                    <button type="button" class="btn btn-primary btn-block" style="background-color: #1f169d;"><i class="fas fa-wrench"></i> Ordens Em Andamento</button>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <!-- Ícone de sinal de marcação de seleção -->
+                    <button type="button" class="btn btn-primary btn-block" style="background-color: #1f169d;"><i class="fas fa-check-circle"></i> Ordens Concluídas</button>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <!-- Ícone de calendário -->
+                    <button type="button" class="btn btn-primary btn-block" style="background-color: #1f169d;"><i class="fas fa-calendar-alt"></i> Ordens Agendadas</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-      <button type="button" class="btn btn-primary">Ordens Em Andamento</button>
-      <button type="button" class="btn btn-primary">Ordens Concluídas</button>
-      <button type="button" class="btn btn-primary">Ordens Agendadas</button>
+    <div class="mt-4">
+        {% for ordem in ordens %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <!-- Destacar informações importantes -->
+                <h5 class="card-title"><a href="{% url 'garage:ordem-detail' ordem.id %}" class="text-decoration-none text-dark text-decoration-underline">{{ ordem.titulo }}</a></h5>
+                <p class="card-text"><small class="text-muted">Data da ordem: {{ ordem.data_ordem }}</small></p>
+                <p class="card-text"><strong>Cliente:</strong> {{ ordem.cliente_id }}</p>
+                <p class="card-text"><strong>Veículo:</strong> {{ ordem.veiculo_id }}</p>
+                <p class="card-text">{{ ordem.descricao }}</p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
-    {% for ordem in ordens %}
-        <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              {% comment %} <a class="mr-2" href="#">{{ ordem.id }}</a> {% endcomment %}
-              <small class="text-muted">{{ ordem.data_ordem }}</small>
-            </div>
-            <h2><a class="article-title" href="{% url 'garage:ordem-detail' ordem.id %}">{{ ordem.titulo }}</a></h2>
-            <p class="article-content">{{ ordem.cliente_id }}</p>
-            <p class="article-content">{{ ordem.veiculo_id }}</p>
-            <p class="article-content">{{ ordem.descricao }}</p>
-          </div>
-        </article>
-    {% endfor %}
 {% endblock content %}

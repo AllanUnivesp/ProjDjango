@@ -1,8 +1,6 @@
 from django.urls import path, include
-from django.contrib.auth.views import LoginView  
+from django.contrib.auth.views import LogoutView
 from .views import (
-    # post_detail,
-    # post_list,
     ClienteListView,
     ClienteDetailView,
     ClienteCreateView,
@@ -19,16 +17,14 @@ from .views import (
     OrdemListView,
     OrdemUpdateView,
     HomeListView,
-    CustomLoginView,  
+    CustomLoginView,
 )
-    # get_name
-    )
 
 app_name = 'garage'
 
 urlpatterns = [
     path('', CustomLoginView.as_view(), name='login'),  
-    path('home/', HomeListView.as_view(), name='home'),  # Adicione a URL para HomeListView
+    path('home/', HomeListView.as_view(), name='home'),
     path('clientes/', ClienteListView.as_view(), name='client-list'),
     path('clientes/new/', ClienteCreateView.as_view(), name='client-create'),
     path('clientes/<int:pk>/', ClienteDetailView.as_view(), name='client-detail'),
@@ -48,4 +44,7 @@ urlpatterns = [
     path('ordens/<int:pk>/delete/', OrdemDeleteView.as_view(), name='ordem-delete'),
     
     path('admin/', include('grappelli.urls')),
+    
+   
+    path('logout/', LogoutView.as_view(next_page='/home/'), name='logout'),
 ]

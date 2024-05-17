@@ -1,8 +1,11 @@
-{% extends "admin/base_site.html" %}
 {% load static %}
 
-{% block extrastyle %}
-    {{ block.super }}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
     <style>
         body {
             background-image: url("{% static 'img/background.jpg' %}");
@@ -27,7 +30,7 @@
         #login-form-wrapper h1 a {
             color: black; /* Defina a cor do link como preto */
             text-decoration: none; /* Remova o sublinhado */
-            font-family: 'Arial Black', Arial, sans-serif; /* Use uma fonte  */
+            font-family: 'Arial Black', Arial, sans-serif; /* Use uma fonte */
             font-size: 24px; /* Defina o tamanho da fonte */
         }
         #login-form {
@@ -63,9 +66,8 @@
             background-color: #0056b3; /* Altere a cor de fundo ao passar o mouse */
         }
     </style>
-{% endblock extrastyle %}
-
-{% block content %}
+</head>
+<body>
     <div id="login-form-wrapper">
         <h1 id="site-name"><a href="{% url 'admin:index' %}" style="color: black;">Auto Mecânica Minoro</a></h1>
         <!-- Adicione o formulário de login aqui -->
@@ -82,4 +84,5 @@
             <button type="submit">Login</button>
         </form>
     </div>
-{% endblock content %}
+</body>
+</html>

@@ -22,6 +22,7 @@ from .views import (
 
 app_name = 'garage'
 
+
 urlpatterns = [
     # Authentication URLs
     path('', CustomLoginView.as_view(), name='login'),

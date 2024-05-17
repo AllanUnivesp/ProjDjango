@@ -110,4 +110,4 @@ class OrdemUpdateView(UpdateView):
 
 class CustomLoginView(LoginView):
     template_name = 'admin/login.html'
-    success_url = reverse_lazy('garage:home')  # Redireciona para a página inicial após o login
+    success_url = reverse_lazy('garage:home')  

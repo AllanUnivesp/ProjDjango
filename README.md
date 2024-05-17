@@ -8,9 +8,10 @@ Com esse sistema, a oficina poderá aplicar as boas práticas de gestão e será
 
 Abaixo algumas das dificuldades encontradas e ainda sem solução definitiva:
  - Repositório atualizado de veículos, gratuíto (para o campo de selecionar o véiculo do cliente)
- - Layout das telas:
-    - Cadastro de clientes
-    - Cadastro de ordem de serviço
+ - Funcionalidades:
+    - Botões de filtros
+    - Menu lateral
+ - Deploy no AWS 
 
 # 1. Pré-requisitos
 

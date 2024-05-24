@@ -2,27 +2,34 @@
 {% load static %}
 
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
 <div class="container mt-5">
     <div class="card shadow">
         <div class="card-body">
-            <!-- Cabeçalho personalizado com o logotipo da oficina mecânica -->
-            <h1 class="card-title text-center mb-4"><img src="{% static 'img/logo.gif' %}" alt="Logo da Oficina Mecânica"></h1>
-            <h2 class="card-title text-dark text-center mb-4">Ordens de Serviços</h2>
-            <p class="card-text lead">Utilize os filtros abaixo para melhorar sua busca.</p>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 mb-3">
-                    <!-- Ícone de chave inglesa -->
-                    <button type="button" class="btn btn-primary btn-block" style="background-color: #1f169d;"><i class="fas fa-wrench"></i> Ordens Em Andamento</button>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-3">
-                    <!-- Ícone de sinal de marcação de seleção -->
-                    <button type="button" class="btn btn-primary btn-block" style="background-color: #1f169d;"><i class="fas fa-check-circle"></i> Ordens Concluídas</button>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-3">
-                    <!-- Ícone de calendário -->
-                    <button type="button" class="btn btn-primary btn-block" style="background-color: #1f169d;"><i class="fas fa-calendar-alt"></i> Ordens Agendadas</button>
-                </div>
+            <div class="text-center mb-4">
+                <img src="{% static 'img/logo.gif' %}" alt="Logo da Oficina Mecânica" style="max-width: 200px;">
             </div>
+            <h2 class="card-title text-center mb-4">Ordens de Serviços</h2>
+            <p class="card-text lead">Utilize os filtros abaixo para melhorar sua busca.</p>
+            
+            <!-- Formulário de filtro -->
+            <form method="get" action="" class="row justify-content-center mb-4">
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <select name="status" class="form-select">
+                        <option value="">Todos os Status</option>
+                        <option value="andamento">Em Andamento</option>
+                        <option value="concluida">Concluídas</option>
+                        <option value="agendada">Agendadas</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <button type="submit" class="btn btn-dark-blue btn-block">Filtrar</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -30,14 +37,31 @@
         {% for ordem in ordens %}
         <div class="card mb-3">
             <div class="card-body">
-                <!-- Destacar informações importantes -->
-                <h5 class="card-title"><a href="{% url 'garage:ordem-detail' ordem.id %}" class="text-decoration-none text-dark text-decoration-underline">{{ ordem.titulo }}</a></h5>
-                <p class="card-text"><small class="text-muted">Data da ordem: {{ ordem.data_ordem }}</small></p>
-                <p class="card-text"><strong>Cliente:</strong> {{ ordem.cliente_id }}</p>
-                <p class="card-text"><strong>Veículo:</strong> {{ ordem.veiculo_id }}</p>
+                <h5 class="card-title">
+                    <a href="{% url 'garage:ordem-detail' ordem.id %}" class="text-decoration-none text-dark">{{ ordem.titulo }}</a>
+                </h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="card-text"><strong>Status:</strong> {{ ordem.status }}</p>
+                        <p class="card-text"><strong>Cliente:</strong> {{ ordem.cliente_id }}</p>
+                        <p class="card-text"><strong>Veículo:</strong> {{ ordem.veiculo_id }}</p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        {% if ordem.status == "andamento" %}
+                            <span class="badge bg-warning text-dark">Em Andamento</span>
+                        {% elif ordem.status == "concluida" %}
+                            <span class="badge bg-success">Concluída</span>
+                        {% elif ordem.status == "agendada" %}
+                            <span class="badge bg-primary">Agendada</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <hr>
                 <p class="card-text">{{ ordem.descricao }}</p>
             </div>
         </div>
+        {% empty %}
+        <p class="text-center">Nenhuma ordem de serviço encontrada.</p>
         {% endfor %}
     </div>
 </div>

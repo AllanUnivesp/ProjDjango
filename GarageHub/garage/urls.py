@@ -22,7 +22,6 @@ from .views import (
 
 app_name = 'garage'
 
-
 urlpatterns = [
     # Authentication URLs
     path('', CustomLoginView.as_view(), name='login'),
@@ -49,8 +48,6 @@ urlpatterns = [
     path('ordens/<int:pk>/', OrdemDetailView.as_view(), name='ordem-detail'),
     path('ordens/<int:pk>/update/', OrdemUpdateView.as_view(), name='ordem-update'),
     path('ordens/<int:pk>/delete/', OrdemDeleteView.as_view(), name='ordem-delete'),
-   
-
 
     # Admin URLs
     path('admin/', include('grappelli.urls')),

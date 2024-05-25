@@ -7,7 +7,9 @@ SECRET_KEY = 'django-insecure-(cc2h#iyr47@&9#7u6ciayph!vpb)e+$vstia2p7^b=hn(#h9n
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['garagehub-env.eba-eiuecejs.sa-east-1.elasticbeanstalk.com']
+
+
 
 INSTALLED_APPS = [
    'django.contrib.admin',
@@ -56,12 +58,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'GarageHub.wsgi.application'
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_db',
+        'USER': 'djangouser',
+        'PASSWORD': 'FjUqS473@e#',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

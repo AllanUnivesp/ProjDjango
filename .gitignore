@@ -281,3 +281,4 @@ pyrightconfig.json
 __pycache__
 Pipfile*
 GarageHub/db.sqlite3
+mysql_config.txt

@@ -3,10 +3,10 @@ beautifulsoup4==4.12.3
 crispy-bootstrap5==2024.2
 Django==5.0.3
 django-crispy-forms==2.1
+django-grappelli==3.0.8
 django-localflavor==4.0
+mysqlclient==2.2.4
 python-stdnum==1.20
 soupsieve==2.5
 sqlparse==0.4.4
 tzdata==2024.1
-django-grappelli
-

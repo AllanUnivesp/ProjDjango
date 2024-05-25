@@ -19,8 +19,13 @@ from .views import (
     HomeListView,
     CustomLoginView,
 )
-
+from django.contrib import admin
 app_name = 'garage'
+admin.site.login_template = 'login.html'
+admin.site.name = 'GarageHub Backend'
+admin.site.site_header = "Bem vindo ao backend do GarageHub"
+admin.site.site_title = "GarageHub Backend"
+admin.site.index_title = "GarageHub Backend"
 
 urlpatterns = [
     # Authentication URLs
@@ -51,4 +56,8 @@ urlpatterns = [
 
     # Admin URLs
     path('admin/', include('grappelli.urls')),
+    
+
 ]
+
+
